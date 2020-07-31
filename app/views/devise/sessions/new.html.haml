@@ -1,0 +1,32 @@
+= render "layouts/header"
+.wrap-loggin
+  ログイン
+  .wrap-loggin__wrap-login
+    = form_with model: resource, as: resource_name, url: session_path(resource_name), class: 'wrap-loggin__wrap-login__user', local: true do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .wrap-loggin__wrap-login__user__field
+        = f.label :email, "メールアドレス", class: "wrap-loggin__wrap-login__user__field__label"
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "wrap-loggin__wrap-login__user__field__window", placeholder: "メールアドレス"
+      .wrap-loggin__wrap-login__user__field
+        = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "wrap-loggin__wrap-login__user__field__window"
+      - if devise_mapping.rememberable?
+        .wrap-loggin__wrap-login__user__field
+          = f.check_box :remember_me
+          = f.label :remember_me, "ログインを記憶する", class: "wrap-loggin__wrap-login__user__field__label"
+      .wrap-loggin__wrap-login__user__actions
+        = f.submit  "login", class: "wrap-loggin__wrap-login__user__actions__btn"
+flash[:alert]
+flash[:notice]
+= render "layouts/footer"
+= render "devise/shared/links"
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .input-field
+-#     = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+-#   .input-field
+-#     = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+-#   - if devise_mapping.rememberable?
+-#     .form-wrapper
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me, "ログインを記憶する"
+-#   = f.submit "次へ進む", class:"button back-red font-white"

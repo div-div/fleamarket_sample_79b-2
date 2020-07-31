@@ -66,4 +66,5 @@ end
 
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem "rename"
-
+gem "devise"
+gem 'font-awesome-sass','~> 5.4.1'

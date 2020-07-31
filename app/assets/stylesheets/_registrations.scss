@@ -1,0 +1,153 @@
+.field_with_errors{
+  display: contents;
+}
+.bar{
+  font-size: 30px;
+  font-weight: bold;
+    width:100vw;
+    height:30px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+.wrap{
+  width:100vw;
+  height:450px;
+  &__new-user{
+    width:300px;
+    height:450px;
+    margin: 0 auto;
+    margin-top: 20px;
+    &__field{
+      // height:70px;
+      position: relative;
+      &__label{
+        font-weight: bold;
+        &:after{
+          content: '必須';
+          width:35px;
+          height:20px;
+          background-color: red;
+          position:absolute;
+          right:150px;
+          color:white;
+          text-align: center;
+          line-height: 20px;
+          font-weight: normal;
+        }
+      }
+      &__window{
+        width:300px;
+        height:40px;
+      }
+    }
+    &__actions{
+      width:280px;
+      height:40px;
+      background-color: red;
+      margin: 0 auto;
+      margin-top: 20px;
+      text-align: center;
+      &__btn{
+        width:250px;
+        height:40px;
+        background-color: red;
+        color:white;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.wrapper{
+  width:100vw;
+  height:500px;
+  &__new-profile{
+    padding-top: 10px;
+    width:400px;
+    margin: 0 auto;
+    &__box{
+      &__label{
+        font-weight: bold;
+        &:after{
+          content: '必須';
+          width:40px;
+          height:20px;
+          padding: 3px;
+          line-height: 20px;
+          background-color: red;
+          color:white;
+          font-weight: normal;
+          margin-left: 10px;
+          font-size: 13px;
+        }
+      }
+      &__windou{
+        width:400px;
+        height:40px;
+      }
+    }
+    &__submit{
+      &__btn{
+        width:400px;
+        height:40px;
+        background-color: red;
+        color:white;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.wap{
+  width:100vw;
+  height:550px;
+  &__address{
+    padding-top: 10px;
+    width:300px;
+    margin: 0 auto;
+    &__field{
+      width:300px;
+      &__label{
+        font-weight: bold;
+        &:after{
+          content: '必須';
+          width:40px;
+          height:20px;
+          padding: 3px;
+          line-height: 20px;
+          background-color: red;
+          color:white;
+          font-weight: normal;
+          margin-left: 10px;
+          font-size: 13px;
+        }
+      }
+      &__window{
+        width:300px;
+        height:40px;
+      }
+    }
+    &__actions{
+      &__submit{
+        width:300px;
+        height:40px;
+        background-color: red;
+        color:white;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
