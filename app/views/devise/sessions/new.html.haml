@@ -16,8 +16,6 @@
           = f.label :remember_me, "ログインを記憶する", class: "wrap-loggin__wrap-login__user__field__label"
       .wrap-loggin__wrap-login__user__actions
         = f.submit  "login", class: "wrap-loggin__wrap-login__user__actions__btn"
-flash[:alert]
-flash[:notice]
 = render "layouts/footer"
 = render "devise/shared/links"
 -# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
