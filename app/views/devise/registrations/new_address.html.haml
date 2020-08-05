@@ -1,0 +1,61 @@
+= render "layouts/header"
+.bar
+  送付先住所
+.wap
+  = form_with model: @address, class: 'wap__address', method: :post, local: true do |f|
+    = render "devise/shared/error_messages", resource: @address
+
+    .wap__address__field
+      = f.label :family_name, "お届け先氏名（苗字）", class: "wap__address__field__label"
+      %br
+      = f.text_field :family_name, class: "wap__address__field__window", placeholder: "山田"
+
+    .wap__address__field
+      = f.label :given_name, "お届け先氏名（名前）", class: "wap__address__field__label"
+      %br
+      = f.text_field :given_name, class: "wap__address__field__window", placeholder: "太郎"
+
+    .wap__address__field
+      = f.label :family_name_kana, "ふりがな（苗字）", class: "wap__address__field__label"
+      %br
+      = f.text_field :family_name_kana, class: "wap__address__field__window", placeholder: "やまだ"
+
+    .wap__address__field
+      = f.label :given_name_kana, "ふりがな（名前）", class: "wap__address__field__label"
+      %br
+      = f.text_field :given_name_kana, class: "wap__address__field__window", placeholder: "たろう"
+
+    .wap__address__field
+      = f.label :postal_code, "郵便番号", class: "wap__address__field__label"
+      %br
+      = f.text_field :postal_code, class: "wap__address__field__window", placeholder: "000-0000"
+
+    .wap__address__field
+      = f.label :city, "都道府県", class: "wap__address__field__label"
+      %br
+      = f.text_field :city, class: "wap__address__field__window", placeholder: "東京都"
+
+    .wap__address__field
+      = f.label :prefecture, "市区町村", class: "wap__address__field__label"
+      %br
+      = f.text_field :prefecture, class: "wap__address__field__window", placeholder: "中央区銀座"
+
+    .wap__address__field
+      = f.label :house_number, "番地", class: "wap__address__field__label"
+      %br
+      = f.text_field :house_number, class: "wap__address__field__window", placeholder: "1-1-1"
+
+    .wap__address__field
+      = f.label :building_name, "ビル名"
+      %br
+      = f.text_field :building_name, class: "wap__address__field__window"
+
+    .wap__address__field
+      = f.label :phone_number, "電話番号", class: "wap__address__field__label"
+      %br
+      = f.text_field :phone_number, class: "wap__address__field__window", placeholder: "000-0000-0000"
+
+    .wap__address__actions
+      = f.submit "登録", class: "wap__address__actions__submit"
+  = render "layouts/footer"
+  = render "devise/shared/links"

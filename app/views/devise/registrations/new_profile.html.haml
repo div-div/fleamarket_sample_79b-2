@@ -1,0 +1,46 @@
+= render "layouts/header"
+.bar
+  会員情報
+.wrapper
+  = form_with model: @profile, url: addresses_path, class: 'wrapper__new-profile', method: :get, local: true do |f|
+    = render "devise/shared/error_messages", resource: @profile
+
+    .wrapper__new-profile__box
+      = f.label :family_name, "苗字", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :family_name, class: "wrapper__new-profile__box__windou",placeholder: "山田"
+
+    .wrapper__new-profile__box
+      = f.label :given_name, "名前", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :given_name, class: "wrapper__new-profile__box__windou", placeholder: "太郎"
+
+    .wrapper__new-profile__box
+      = f.label :family_name_kana, "苗字ふりがな", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :family_name_kana, class: "wrapper__new-profile__box__windou", placeholder: "やまだ"
+
+    .wrapper__new-profile__box
+      = f.label :given_name_kana,"名前ふりがな", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :given_name_kana, class: "wrapper__new-profile__box__windou", placeholder: "たろう"
+
+    .wrapper__new-profile__box
+      = f.label :birth_date_year, "生年月日（西暦）", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :birth_date_year, class: "wrapper__new-profile__box__windou", placeholder: "2000"
+
+    .wrapper__new-profile__box
+      = f.label :birth_date_month, "生年月日（月）", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :birth_date_month, class: "wrapper__new-profile__box__windou", placeholder: "01"
+
+    .wrapper__new-profile__box
+      = f.label :birth_date_day, "生年月日（日）", class: "wrapper__new-profile__box__label"
+      %br
+      = f.text_field :birth_date_day, class: "wrapper__new-profile__box__windou", placeholder: "01"
+
+    .wrapper__new-profile__submit
+    = f.submit "次へ", class: "wrapper__new-profile__submit__btn"
+  = render "layouts/footer"
+  = render "devise/shared/links"
