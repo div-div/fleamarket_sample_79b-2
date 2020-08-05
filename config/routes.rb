@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # resources :users
   # get 'new_user_session_path', to: 'sessions#new'
   # post 'user_session_path', to: 'sessions#create'
+
 end

@@ -1,0 +1,115 @@
+.Main {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #eeeeee;
+  &__header {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__contents {
+    background-color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    .content {
+      &__header {
+        padding: 35px 15px;
+        margin: 0 auto;
+        max-width: 375px;
+        h2 {
+          text-align: center;
+          font-size: 25px;
+          line-height: 35px;
+          font-weight: 600;
+        }
+      }
+      &__item {
+        .item__image {
+          display: flex;
+          &__photo {
+            margin-right: 10px;
+          }
+          &__info {
+            width: 100%;
+            .name {
+              margin-bottom: 10px;
+            }
+            .price {
+              text-align: right;
+              span {
+                margin-right: 10px;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+      &__fee {
+        display: flex;
+        justify-content: space-between;
+      }
+      &__credit {
+        .user-info {
+          text-decoration: none;
+          color: #777777;
+        }
+      }
+      &__address {
+        .user-info {
+          text-decoration: none;
+          color: #777777;
+        }
+      }
+      &__button {
+        text-align: center;
+        .confirm-btn {
+          width: 100%;
+          font-size: 15px;
+          min-height: 50px;
+          font-weight: 600;
+        }
+      }
+      .space {
+        padding: 35px 15px;
+        margin: 0 auto;
+        max-width: 375px;
+        border-top: 1px #dddddd solid;
+      }
+    }
+  }
+  &__info {
+    text-align: center;
+    padding: 40px 0;
+    .footer-info {
+      display: flex;
+      justify-content: center;
+      li {
+        margin-right: 20px;
+      }
+      .info {
+        font-size: 13px;
+        color: black;
+        text-decoration: none;
+      }
+    }
+    .footer-logo {
+      padding: 20px 0;
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .logo {
+    width: 200px;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 13px;
+  }
+  .font {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,83 @@
+.PcHeader {
+  padding: 0 60px;
+    &__Inner {
+      max-width: 1040px;
+      width: 100%;
+      min-height: 82px;
+      margin: 0 auto;
+      padding: 15px 0 0;
+      .TopContent {
+        position: relative;
+        display: flex;
+        align-items: center;
+        h1 {
+          font-size: 100%;
+          font-weight: normal;
+        }
+        .Img {
+          padding-bottom: 10px;
+          margin-right: 30px;
+          border-radius: 4px;
+        }
+        form {
+          width: 100%;
+          display: flex;
+          margin-bottom: 5px;
+        }
+        .Search {
+          margin-left: auto;
+          width: 100%;
+          .ItemForm {  
+            width: calc(100% - 26px);
+            height: 36px;
+            padding: 0 0 0 5px;
+          }
+        }
+        .BtnSearch {
+          width: 50px;
+          height: 40px;
+          background-color: #3CCACE;
+          border: none;
+          .image {
+            width: 30px;
+            height: 30px;
+            vertical-align: bottom;
+          }
+        }
+      }
+      
+      .BottomContent {
+        font-size: 14px;
+        display: flex;
+        margin-bottom: 10px;
+        justify-content: space-between;
+        .ListLeft {
+          position: relative;
+          display: flex;
+          
+          .item_1 { 
+            display: flex;
+            line-height: 38px;
+            text-decoration: none;
+          }
+          .item_2 {
+            display: flex;
+            line-height: 38px;
+            padding: 0 0 0 16px;
+          }
+        }
+        .ListRight {
+          margin-left: auto;
+          display: flex;
+          .item_3 {
+            line-height: 38px;
+            padding: 0 0 0 16px;
+          }
+          .item_4 {
+            line-height: 38px;
+            padding: 0 0 0 16px;
+          }
+        }
+      }
+    }
+}
