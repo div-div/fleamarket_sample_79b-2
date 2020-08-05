@@ -3,9 +3,9 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: true|
-|email|string|null: true, unique: true, index: true|
-|password|string|null: true|
+|nickname|string|null: false|
+|email|string|null: false, unique: true, index: true|
+|password|string|null: false|
 ### association
 - has_one :profile, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
@@ -20,10 +20,10 @@
 |given_name|string|null: false|
 |family_name_kana|string|null: false|
 |given_name_kana|string|null: false|
-|birth_date_year|string|null: false|
-|birth_date_month|string|null: false|
-|birth_date_day|string|null: false|
-|user_id|string|null: false, foreign_key: true|
+|birth_date_year|integer|null: false|
+|birth_date_month|integer|null: false|
+|birth_date_day|integer|null: false|
+|user_id|references|null: false, foreign_key: true|
 ### association
 - belongs_to :user
 
@@ -38,7 +38,7 @@
 |prefecture|string|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
-|building_name|string|null: false|
+|building_name|string||
 |phone_number|sgring|unique: true|
 |user_id|references|foreign_key: true, null: true|
 ### association
@@ -50,7 +50,7 @@
 |------|----|-------|
 |user_id|reference|foreign_key: true, null: false|
 |card_id|integer|null: false|
-|customer_id|integer|null: false|
+|customer_id|references|null: false|
 ### association
 - belongs_to :user
 
@@ -95,13 +95,6 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string|null: false|
-### association
-- has_many :items
-
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
 ### association
 - has_many :items
 
