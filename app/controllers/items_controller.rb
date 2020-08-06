@@ -13,10 +13,10 @@ class ItemsController < ApplicationController
     @brand = Brand.new(brand_params)
     # binding.pry
     if @item.save
-      redirect_to root_path, notice: "ok"
+      redirect_to new_item_path, notice: "ok"
     else
       # flash.now[:alert] = 'no'
-      redirect_to root_path, notice: "no"
+      redirect_to new_item_path, alert: "no"
     end
   end
 
