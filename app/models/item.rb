@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", foreign_key: "buyer_id"
 
   accepts_nested_attributes_for :images, allow_destroy: true
+  mount_uploader :image, ImageUploader
   
   with_options presence: true do 
     validates :name
