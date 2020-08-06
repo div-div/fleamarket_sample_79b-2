@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_042059) do
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "brand_name", null: false
+    t.string "brand_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_042059) do
     t.text "description", null: false
     t.integer "price", null: false
     t.bigint "buyer_id"
-    t.bigint "seller_id"
+    t.bigint "seller_id", null: false
     t.bigint "category_id"
     t.bigint "brand_id"
     t.bigint "item_condition_id", null: false

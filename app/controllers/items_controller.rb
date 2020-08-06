@@ -11,13 +11,14 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @brand = Brand.new(brand_params)
-    # binding.pry
+    binding.pry
     if @item.save
       redirect_to new_item_path, notice: "ok"
     else
       # flash.now[:alert] = 'no'
       redirect_to new_item_path, alert: "no"
     end
+    # seller_id = current_user.id
   end
 
   def update
@@ -26,7 +27,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price)
+    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, current_user.id)
   end
 
   def brand_params
