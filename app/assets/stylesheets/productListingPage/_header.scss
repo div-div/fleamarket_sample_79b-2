@@ -1,0 +1,11 @@
+.Base{
+  &__head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 120px;
+    background-color: rgb(245, 245, 245);
+    &__icon{}
+  }
+}

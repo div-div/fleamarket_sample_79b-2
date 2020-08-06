@@ -1,0 +1,392 @@
+// ------------mixin定義-----------------------------------
+@mixin mark{
+  background-color: red;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+  height: 20px;
+  width: 30px;
+  text-align: center;
+  margin-left: 10px;
+}
+@mixin layout{
+  padding: 30px;
+  background-color: white;
+  border-bottom: 2px solid rgb(245, 245, 245);
+}
+// ----------ロゴ---------------------------------------
+.Base{
+  background-color: rgb(245, 245, 245);
+  height: 2400px;
+  font-size: 14px;
+  &__body{
+    &__area{
+      margin: 0 auto;
+      background-color: white;
+      width: 700px;
+      height: 300px;
+// --------出品画像欄--------------------------------------------
+      &__picture{
+        height: 280px;
+        @include layout;
+        &__text{
+          &__step{
+            display: flex;
+            &__title{
+              font-weight: bold;
+              margin-bottom: 10px;
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          &__explain{
+            font-size: 12px;
+            margin-bottom: 10px;
+          }
+        }
+        &__iconArea{
+          height: 150px;
+          width: calc(100% - 20px);
+          margin: 10px 0;
+          padding-top: 40px;
+          background-color: rgb(245, 245, 245);
+          display: inline-block;
+          text-align: center;
+          font-size: 20px;
+          border: 2px dotted rgb(206, 206, 206);
+          &__pictureArea{
+            display: none;
+          }
+          &__text{
+            font-size: 12px;
+          }
+        }
+        
+      }
+// -----------商品説明欄----------------------------------------------
+      &__item{
+        height: 370px;
+        @include layout;
+        &__nameArea{
+          &__step{
+            display: block;
+            &__name{
+              display: flex;
+              font-weight: bold;
+              margin-bottom: 10px;
+              &__mark{
+                @include mark;
+              }
+            }
+            &__inputArea{
+              width: calc(100% - 20px);
+              height: 40px;
+              border: 1px solid rgb(206, 206, 206);
+              margin-bottom: 30px;
+              padding-left: 10px;
+            }
+          }
+        }
+        &__informationArea{
+          &__step{
+            display: flex;
+            &__information{
+              font-weight: bold;
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          &__space{
+            height: 150px;
+            width: calc(100% - 20px);
+            margin: 10px 10px 10px 0;
+            padding: 10px;
+            display: inline-block;
+            border: 1px solid rgb(206, 206, 206);
+          }
+          &__number{
+            font-size: 12px;
+            color: grey;
+            text-align: right;
+            margin-right: 30px;
+          }
+        }
+      }
+// -----------商品詳細欄--------------------------------------
+      &__itemDetail{
+        height: 420px;
+        @include layout;
+        &__categoryArea{
+          &__step{
+            display: flex;
+            margin-top: 20px;
+            &__category{
+              font-weight: bold;
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          // &__selectArea{
+          //   height: 50px;
+          //   width: calc(100% - 20px);
+          //   display: inline-block;
+          //   border: 1px solid rgb(206, 206, 206);
+          //   margin: 10px 0 30px 0;
+          //   padding-left: 10px;
+          // }
+          #item_category_id{
+            height: 50px;
+            width: calc(100% - 20px);
+            display: inline-block;
+            border: 1px solid rgb(206, 206, 206);
+            margin: 10px 0 30px 0;
+            padding-left: 10px;
+          }
+        }
+        &__brandArea{
+          background-color: white;
+          height: 100px;
+          &__step{
+            display: flex;
+            margin-top: 10px;
+            &__brand{
+              font-weight: bold;
+            }
+            &__mark{
+              background-color: grey;
+              font-weight: bold;
+              color: white;
+              height: 20px;
+              width: 30px;
+              font-size: 12px;
+              text-align: center;
+              margin-left: 10px;
+            }
+          }
+          &__inputArea{
+            height: 50px;
+            width: calc(100% - 20px);
+            display: inline-block;
+            margin: 10px 0 30px 0;
+            padding-left: 10px;
+            border: 1px solid rgb(206, 206, 206);
+          }
+        }
+        &__conditionArea{
+          background-color: white;
+          height: 100px;
+          margin-top: 20px;
+          &__step{
+            display: flex;
+            margin-top: 10px;
+            &__condition{
+              font-weight: bold;
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          #item_item_condition_id{
+            height: 50px;
+            width: calc(100% - 20px);
+            display: inline-block;
+            border: 1px solid rgb(206, 206, 206);
+            margin-top: 10px;
+            padding-left: 10px;
+          }
+        }
+      }
+// ----------------配送欄--------------------------------
+      &__delivery{
+        height: 450px;
+        @include layout;
+        &__feeArea{
+          &__step{
+            display: flex;
+            padding-top: 20px;
+            &__fee{
+              font-weight: bold;
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          #item_delivery_cost_id{
+            height: 50px;
+            width: calc(100% - 20px);
+            margin: 10px 0 40px 0;
+            padding-left: 10px;
+            display: inline-block;
+            border: 1px solid rgb(206, 206, 206);
+          }
+        }
+        &__regionArea{
+          &__step{
+            display: flex;
+            &__region{
+              font-weight: bold
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          #item_seller_region_id{
+            height: 50px;
+            width: calc(100% - 20px);
+            margin: 10px 0 40px 0;
+            padding-left: 10px;
+            display: inline-block;
+            border: 1px solid rgb(206, 206, 206);
+          }
+        }
+        &__daysArea{
+          &__step{
+            display: flex;
+            &__days{
+              font-weight: bold
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          #item_preparation_for_shipment_id{
+            height: 50px;
+            width: calc(100% - 20px);
+            margin-top: 10px;
+            padding-left: 10px;
+            display: inline-block;
+            border: 1px solid rgb(206, 206, 206);
+          }
+        }
+      }
+// ---------------料金欄--------------------------------------
+      &__price{
+        height: 300px;
+        padding: 30px;
+        background-color: white;
+        &__sellingPriceArea{
+          display: flex;
+          justify-content: space-between;
+          margin-top: 30px;
+          &__letterStep{
+            display: flex;
+            &__price{
+              font-weight: bold;
+            }
+            &__mark{
+              @include mark;
+            }
+          }
+          &__inputStep{
+            display: inline-flex;
+            justify-content: flex-end;
+            align-items: center;
+            &__unit{
+              margin-right: 5px;
+            }
+            // &__selectArea{
+            //   text-align: right;
+            //   margin-right: 10px;
+            //   border: 1px solid rgb(206, 206, 206);
+            //   height: 40px;
+            //   width: 300px;
+            // }
+            #price{
+              text-align: right;
+              margin-right: 10px;
+              border: 1px solid rgb(206, 206, 206);
+              height: 40px;
+              width: 300px;
+            }
+          }
+        }
+        &__chargeArea{
+          display: flex;
+          margin: 40px 0;
+          padding-bottom: 20px;
+          justify-content: space-between;
+          border-bottom: 1px solid rgb(206, 206, 206);
+          &__charge{
+          }
+          &__calculate{
+            margin-right: 10px;
+          }
+        }
+        &__profitArea{
+          display: flex;
+          justify-content: space-between;
+          &__profit{
+          }
+          &__calculate{
+            margin-right: 10px;
+          }
+        }
+      }
+// --------------ボタン欄-------------------------------------
+      &__buttonArea{
+        background-color: white;
+        height: 180px;
+        padding-left: 10px;
+        text-align: center;
+        &__exhibit{
+          background-color: red;
+          font-weight: bold;
+          color: white;
+          height: 50px;
+          width: 50%;
+          margin: 0 auto 20px auto;
+          border: none;
+        }
+        &__save{
+          background-color: rgb(177, 177, 177);
+          font-weight: bold;
+          height: 50px;
+          width: 50%;
+          margin: 0 auto 20px auto;
+          border: none;
+        }
+        &__back{
+          display: block;
+          text-decoration: none;
+        }
+      }
+// ---------------注意文-------------------------------------
+      &__attention{
+        font-size: 10px;
+        background-color: white;
+        height: 100px;
+        padding: 0 30px;
+      }
+// -----------プライバシーポリシー類-----------------------
+      &__foot{
+        &__agreementArea{
+          display: flex;
+          justify-content: center;
+          font-size: 5px;
+          margin: 15px 0;
+          &__policy{
+            text-decoration: none;
+          }
+          &__agreement{
+            margin: 0 10px;
+            text-decoration: none;
+          }
+          &__write{
+            text-decoration: none;
+          }
+        }
+        &__icon{
+          text-align: center;
+          margin-top: 40px;
+        }
+        &__applicationName{
+          text-align: center;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
