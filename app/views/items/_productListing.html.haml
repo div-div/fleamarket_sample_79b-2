@@ -11,9 +11,9 @@
           .Base__body__area__picture__text__explain
             最大10枚までアップロードできます
           = i.fields_for :images do |k|
-            = k.label :image, class: "Base__body__area__picture__iconArea" do
+            = k.label :image_url, class: "Base__body__area__picture__iconArea" do
               = icon('fas','camera')
-              = k.file_field :image, class: "Base__body__area__picture__iconArea__pictureArea"
+              = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
               .Base__body__area__picture__iconArea__text
                 ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
 
