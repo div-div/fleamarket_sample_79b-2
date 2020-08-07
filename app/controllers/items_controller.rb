@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @brand = Brand.new
     @item.images.new
-    # @items = Item.includes(:images)
+    @image = Item.includes(:images).order("created_at DESC")
   end
 
   def create

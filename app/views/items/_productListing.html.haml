@@ -10,12 +10,18 @@
               必須
           .Base__body__area__picture__text__explain
             最大10枚までアップロードできます
+        #image-box
+          -# #previews
+          -#   - if @item.persisted?
+          -#     - @item.images.each_with_index do |image, i|
+          -#       = image_tag image.image_url.url, data: { index: i }, width:"100", height: "100"
           = i.fields_for :images do |k|
-            = k.label :image_url, class: "Base__body__area__picture__iconArea" do
-              = icon('fas','camera')
-              = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
-              .Base__body__area__picture__iconArea__text
-                ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+            #iconArea-js{"data-index" => "#{k.index}"}
+              = k.label :image_url, class: "Base__body__area__picture__iconArea" do
+                = icon('fas','camera')
+                = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
+                .Base__body__area__picture__iconArea__text
+                  ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
 
       .Base__body__area__item
         .Base__body__area__item__nameArea
