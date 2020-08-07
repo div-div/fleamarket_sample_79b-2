@@ -2,7 +2,7 @@
 .wrap-loggin
   ログイン
   .wrap-loggin__wrap-login
-    = form_with model: resource, as: resource_name, url: session_path(resource_name), class: 'wrap-loggin__wrap-login__user', local: true do |f|
+    = form_with model: resource, as: resource_name, url: user_session_path, class: 'wrap-loggin__wrap-login__user', local: true do |f|
       = render "devise/shared/error_messages", resource: resource
       .wrap-loggin__wrap-login__user__field
         = f.label :email, "メールアドレス", class: "wrap-loggin__wrap-login__user__field__label"
