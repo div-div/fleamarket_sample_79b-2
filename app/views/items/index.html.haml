@@ -1,2 +1,221 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.erb
+= render "header"
+= render "main"
+= render "reason"
+.SubVisual
+  .SubVisual__Content
+    .SubVisual__Content__Subtital
+      会員数日本一位
+    .SubVisual__Content__text
+      FURIMAは、フリマアプリで最も人気。
+      %br出品・購入回数も業界最多です！
+      ほしかったあの商品に出会えるかもしれません。
+
+    .SubVisual__Content__btn
+      = image_tag "Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg", class: "app_apple"
+      = image_tag "google-play-badge.png", class: "app_google"
+
+.Feature
+  %section.Reason
+    %h2.Title
+      FURIMAがの特徴
+    %ul.Lists
+      %li.List
+        .List__Picture
+          = image_tag "icon/icon-01.png", class: "feature_image"
+        %h3.List__Text
+          簡単に売り買いできる
+        %p.List__description
+          スマホひとつで、いつでもどこでも
+          %br簡単に出品・購入が可能！
+      %li.List
+        .List__Picture
+          = image_tag "icon/icon-03.png", class: "feature_image"
+        %h3.List__Text
+          売上金は即日振込みに対応
+        %p.List__description
+          午前9時までに振込を依頼いただけ
+          %brれば、翌日に指定の口座に入金いた
+          します!
+      %li.List.List--last
+        .List__Picture
+          = image_tag "icon/icon-04.png", class: "feature_image"
+        %h3.List__Text
+          様々な支払いに対応
+        %p.List__description
+          お支払いは、クレジットカードだけ
+          %brでなく、ポイントや売上金など多彩
+          な方法があります。
+
+.PickupCategory
+  .PickupCategory__head
+    ピックアップカテゴリー
+  .PickupCategory__title
+    新規投稿商品
+  .PickupCategory__items
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム１
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+.PickupCategory
+  .PickupCategory__head
+    ピックアップブランド
+  .PickupCategory__title
+    アーカイバ
+  .PickupCategory__items
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム１
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+
+    .PickupCategory__items__item-box
+      = link_to "#", class: "item-link" do
+        .PickupCategory__items__item-box__image
+          = image_tag "icon/icon-04.png", class: "items-image"
+        .PickupCategory__items__item-box__name
+          アイテム
+        %ul.PickupCategory__items__item-box__prudcts
+          %li.PickupCategory__items__item-box__prudcts__price
+            10000円
+          %li.PickupCategory__items__item-box__prudcts__iine
+            2
+        %p.PickupCategory__items__item-box__zei
+          (税込)
+
+.bottomVisual
+  .bottomVisual__Content
+    .bottomVisual__Content__Subtital
+      だれでもかんたん、人生を変えるフリマアプリ
+    .bottomVisual__Content__text
+      今すぐ無料ダウンロード！
+    .bottomVisual__Content__btn
+      = image_tag "Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg", class: "app_apple"
+      = image_tag "google-play-badge.png", class: "app_google"
+
+= render '/layouts/footer'
