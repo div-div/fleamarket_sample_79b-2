@@ -22,6 +22,6 @@ class Item < ApplicationRecord
     validates :delivery_cost_id
     validates :seller_region_id
     validates :preparation_for_shipment_id
-    validates :image_ids, length: { maximum: 10 }
+    validates :image_ids, length: {maximum: 10}
   end
 end
