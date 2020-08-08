@@ -14,7 +14,7 @@
           #previews
             - if @item.persisted?
               - @item.images.each_with_index do |image, x|
-                = image_tag image.image_url.url, data: { index: x }, width: "100", height: "100"
+                = image_tag image.image_url.url, data: { index: x }, width: "100", height: "80"
           = i.fields_for :images do |k|
             #iconArea-js{"data-index" => "#{k.index}"}
               = k.label :image_url, class: "Base__body__area__picture__iconArea" do
