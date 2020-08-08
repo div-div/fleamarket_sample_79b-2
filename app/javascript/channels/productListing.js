@@ -18,41 +18,43 @@ $(function(){
   });
 
 
-    const buildFileField = (num)=> {
-      const html = `<div id="iconArea-js" data-index="${num}">
-                    <label class="Base__body__area__picture__iconArea" for="item_images_attributes_${num}_image_url"><i class="fas fa-camera"></i>
-                    <input class="Base__body__area__picture__iconArea__pictureArea" type="file" name="item[images_attributes][${num}][image_url]" id="item_images_attributes_${num}_image_url">
-                    <div class="Base__body__area__picture__iconArea__text">
-                    </div>
-                    </label></div>
-                    `;
-      return html;
-    }
+  const buildFileField = (num)=> {
+    const html = `<div id="iconArea-js" data-index="${num}">
+                  <label class="Base__body__area__picture__iconArea" for="item_images_attributes_${num}_image_url"><i class="fas fa-camera"></i>
+                  <input class="Base__body__area__picture__iconArea__pictureArea" type="file" name="item[images_attributes][${num}][image_url]" id="item_images_attributes_${num}_image_url">
+                  <div class="Base__body__area__picture__iconArea__text">
+                  </div>
+                  </label></div>
+                  `;
+    return html;
+  }
 
-    // const buildImg = (index, url)=> {
-    //   const html = `<img data-index="${index}" image_url="${url}" width="100px" height="100px"> `;
-    //   return html;
-    // }
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px"> `;
+    return html;
+  }
 
-    let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-    $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  // $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
+  //   $("#image-box").append(buildFileField(fileIndex[0]));
+  //   fileIndex.shift();
+  //   fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+  // });   複数投稿ボタン作成（戻して確認時のみ生かす）
+
+  $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
+    const targetIndex = $(this).parent().parent().data("index");
+    console.log(targetIndex)
+    const file = e.target.files[0];
+    console.log(file)
+    const blobUrl = window.URL.createObjectURL(file);
+
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]){
+      img.setAttribute("image_url", blobUrl);
+    } else {
+      $("#previews").append(buildImg(targetIndex, blobUrl));
       $("#image-box").append(buildFileField(fileIndex[0]));
       fileIndex.shift();
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-    });
-
-    // $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
-    //   const targetIndex = $(this).parent().data("index");
-    //   const file = e.target.files[0];
-    //   const blobUrl = window.URL.createObjectURL(file);
-
-    //   // if (img = $(`img[data-index="${targetIndex}"]`)[0]){
-    //   //   img.setAttribute("image_url", blobUrl);
-    //   // } else {
-    //   //   $("#previews").append(buildImg(targetIndex, blobUrl));
-    //   //   $("#image-box").append(buildFileField(fileIndex[0]));
-    //   //   fileIndex.shift();
-    //   //   fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-    //   // }
-    // });
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    }
+  });
 })
