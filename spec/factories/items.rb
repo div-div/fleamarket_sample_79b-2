@@ -9,11 +9,8 @@ FactoryBot.define do
     delivery_cost_id              {"1"}
     seller_region_id              {"1"}
     preparation_for_shipment_id   {"1"}
-    user                          { association :user }
-    seller                        { association :user }
-    # image_ids
     after(:build) do |item|
-      item.images << build_list(:image, 3)
+      item.images << build_list(:image, 5)
     end
   end
 end

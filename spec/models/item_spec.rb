@@ -65,9 +65,10 @@ describe Item do
       expect(item).to be_valid
     end
     it "is invalid without an image_ids" do
-      item = build(:item, images: nil)
+      item = build(:item)
+      item.images.clear
       item.valid?
-      expect(item.errors[:images]).to include("can't be blank")
+      expect(item.errors[:image_ids]).to include("can't be blank")
     end
   end
 end

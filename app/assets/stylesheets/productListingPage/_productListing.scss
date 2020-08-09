@@ -51,11 +51,9 @@
           background-color: rgb(245, 245, 245);
           justify-content: center;
           border: 2px dotted rgb(206, 206, 206);
-          // width: calc(100% - 20px);
-          // width: 80vw;
+          
         }
         #iconArea-js{
-          // width:20%
         }
         &__iconArea{
           height: 150px;
@@ -66,7 +64,7 @@
           display: inline-block;
           text-align: center;
           font-size: 20px;
-          // border: 2px dotted rgb(206, 206, 206);
+    
           &__pictureArea{
             display: none;
           }
@@ -141,14 +139,6 @@
               @include mark;
             }
           }
-          // &__selectArea{
-          //   height: 50px;
-          //   width: calc(100% - 20px);
-          //   display: inline-block;
-          //   border: 1px solid rgb(206, 206, 206);
-          //   margin: 10px 0 30px 0;
-          //   padding-left: 10px;
-          // }
           #item_category_id{
             height: 50px;
             width: calc(100% - 20px);
@@ -299,13 +289,6 @@
             &__unit{
               margin-right: 5px;
             }
-            // &__selectArea{
-            //   text-align: right;
-            //   margin-right: 10px;
-            //   border: 1px solid rgb(206, 206, 206);
-            //   height: 40px;
-            //   width: 300px;
-            // }
             #price{
               text-align: right;
               margin-right: 10px;

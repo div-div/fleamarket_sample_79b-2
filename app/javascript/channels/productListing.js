@@ -34,11 +34,6 @@ $(function(){
   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  // $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
-  //   $("#image-box").append(buildFileField(fileIndex[0]));
-  //   fileIndex.shift();
-  //   fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-  // });   複数投稿ボタン作成（戻して確認時のみ生かす）
 
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
     $(".Base__body__area__picture__iconArea").css({"display":"none"});

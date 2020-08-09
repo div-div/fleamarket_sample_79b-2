@@ -12,13 +12,12 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @brand = Brand.new(brand_params)
-    # binding.pry
     if @item.save
-      redirect_to new_item_path, notice: "ok"
+      redirect_to new_item_path, notice: "出品が完了しました"
     else
-      # flash.now[:alert] = "no"
-      redirect_to new_item_path, alert: "no"
-      # render :new
+      @item = Item.new(item_params)
+      flash.now[:alert] = "no"
+      redirect_to new_item_path, alert: "必須項目は全て入力してください"
     end
   end
 
