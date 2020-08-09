@@ -79,7 +79,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     sign_in(:user, @user)
 
-    render '/home/index.html.haml'
+    redirect_to root_path
 
 
 end

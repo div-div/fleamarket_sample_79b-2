@@ -27,7 +27,7 @@
         .Search {
           margin-left: auto;
           width: 100%;
-          .ItemForm {  
+          .ItemForm {
             width: calc(100% - 26px);
             height: 36px;
             padding: 0 0 0 5px;
@@ -45,7 +45,7 @@
           }
         }
       }
-      
+
       .BottomContent {
         font-size: 14px;
         display: flex;
@@ -54,8 +54,8 @@
         .ListLeft {
           position: relative;
           display: flex;
-          
-          .item_1 { 
+
+          .item_1 {
             display: flex;
             line-height: 38px;
             text-decoration: none;
@@ -80,4 +80,8 @@
         }
       }
     }
+}
+.header-link{
+  text-decoration: none;
+  color: black;
 }

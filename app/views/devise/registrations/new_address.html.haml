@@ -2,7 +2,7 @@
 .bar
   送付先住所
 .wap
-  = form_with model: @address, class: 'wap__address', method: :post, local: true do |f|
+  = form_with model: @address, class: 'wap__address', local: true do |f|
     = render "devise/shared/error_messages", resource: @address
 
     .wap__address__field
