@@ -28,8 +28,8 @@ $(function(){
   }
 
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="80px">
-                  <div class="Base__body__area__picture__iconArea__delete">　　　削除</div>
+    const html = `<div class="Preview__wrapper"><img data-index="${index}" src="${url}" width="100px" height="80px">
+                  <div class="Preview__wrapper__btn"><div class="Preview__wrapper__btn__delete">削除</div><div class="Preview__wrapper__btn__edit">編集</div></div></div>
                   `;
     return html;
   }
@@ -40,13 +40,13 @@ $(function(){
 
   $(".hidden-destroy").hide();
 // ---------------削除----------------------------------削除---------------------------------------------
-  $("#image-box").on("click", ".Base__body__area__picture__iconArea__delete", function(){
+  $("#image-box").on("click", ".Preview__wrapper__btn__delete", function(){
     const targetIndex = $(this).parent().parent().data("index")
     console.log(this)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop("checked, true");
 
-    $(this).prev().remove();
+    $(this).parent().parent().remove();
     $(this).remove();
     $(`imag[data-index="${targetIndex}"]`).remove();
 

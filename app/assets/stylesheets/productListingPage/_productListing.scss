@@ -27,7 +27,7 @@
       height: 300px;
 // --------出品画像欄--------------------------------------------
       &__picture{
-        height: 280px;
+        height: 310px;
         @include layout;
         &__text{
           &__step{
@@ -46,12 +46,22 @@
           }
         }
         #image-box{
+          width: 636px;
           display: flex;
-          flex-wrap: nowrap;
           background-color: rgb(245, 245, 245);
           justify-content: center;
           border: 2px dotted rgb(206, 206, 206);
-          
+          #previews{
+            display: flex;
+            flex-wrap: wrap;
+            .Preview__wrapper{
+              &__btn{
+                display: flex;
+                justify-content: space-around;
+                font-size: 12px;
+              }
+            }
+          }
         }
         #iconArea-js{
         }
