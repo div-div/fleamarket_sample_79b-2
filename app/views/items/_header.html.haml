@@ -3,7 +3,7 @@
     .TopContent
       %h1.Img
         -# = image_tag "logo.png", size: "140x40", class: "Image"
-        = image_tag "logo.png", class: "Image"
+        = image_tag asset_path("logo.png"), class: "Image"
       %form.Search
         %input{name: "UTF8", type: "hidden", value: "✓"}
         %input.ItemForm{placeholder: "キーワードから探す", type: "text"}/
