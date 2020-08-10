@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @brand = Brand.new
+    # @item.brand.new
     @item.images.new
     @image = Item.includes(:images).order("created_at DESC")
   end
@@ -23,17 +24,19 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.upload(item_params)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       # redirect_to root_path, notice: "更新しました"
-      redirect_to new_item_path, notice: "更新しました"
+      redirect_to "/items/15/edit", notice: "更新しました"
     else
-      @item = Item.new(item_params)
       # flash.now[:alert] = "no"
-      redirect_to new_item_path, alert: "更新に失敗しました"
+      redirect_to "/items/15/edit", alert: "更新に失敗しました"
     end
   end
 
   def edit
+    @item = Item.find(params[:id])
+    # @brand = Brand.find(params[:id])
   end
 
   private

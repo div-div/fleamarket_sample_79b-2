@@ -335,6 +335,15 @@
           margin: 0 auto 20px auto;
           border: none;
         }
+        &__update{
+          background-color: blue;
+          font-weight: bold;
+          color: white;
+          height: 50px;
+          width: 50%;
+          margin: 0 auto 20px auto;
+          border: none;
+        }
         &__save{
           background-color: rgb(177, 177, 177);
           font-weight: bold;
