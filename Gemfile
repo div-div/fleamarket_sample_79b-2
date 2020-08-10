@@ -69,6 +69,10 @@ gem "rename"
 
 gem 'devise'
 gem "font-awesome-sass"
+gem 'jquery-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'active_hash'
 group :development, :test do
   gem 'capistrano'
   gem 'capistrano-rbenv'
