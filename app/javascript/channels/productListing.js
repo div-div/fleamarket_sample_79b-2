@@ -29,7 +29,8 @@ $(function(){
 
   const buildImg = (index, url)=> {
     const html = `<img data-index="${index}" src="${url}" width="100px" height="80px">
-                  <div class="Base__body__area__picture__iconArea__delete">　　　削除</div>`;
+                  <div class="Base__body__area__picture__iconArea__delete">　　　削除</div>`
+                  ;
     return html;
   }
 
