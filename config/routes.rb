@@ -24,8 +24,5 @@
         get 'confirmation', to: 'purchases#confirmation'
       end
     end
-    collection do
-      get "category", to: "items#category"
-    end
   end
 end

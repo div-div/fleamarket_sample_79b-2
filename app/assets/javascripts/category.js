@@ -16,7 +16,7 @@ $(function(){
                           <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
                         </div>
                       </div>`;
-    $('.listing-product-detail__category').append(childSelectHtml);
+    $('.listing-select-wrapper').append(childSelectHtml);
   }
   // 孫カテゴリーの表示作成
   function appendGrandchidrenBox(insertHTML){
@@ -30,7 +30,7 @@ $(function(){
                                 <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
                               </div>
                             </div>`;
-    $('.listing-product-detail__category').append(grandchildSelectHtml);
+    $('.listing-select-wrapper').append(grandchildSelectHtml);
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){

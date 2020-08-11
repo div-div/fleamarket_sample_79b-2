@@ -47,8 +47,11 @@
           -# = i.select :category_id, {"レディース":1, "メンズ":2, "ベビー・キッズ":3, "インテリア・住まい・小物":4, "本・音楽・ゲーム":5, "おもちゃ・ホビー・グッズ":6, "コスメ・香水・美容":7, "家電・スマホ・カメラ":8, "スポーツ・レジャー":9, "ハンドメイド":10, "チケット":11, "自動車・オートバイ":12, "その他":13}, {include_blank: "選択してください"}, {class: "Base__body__area__itemDetail__categoryArea__selectArea", required: true}
         .listing-form-box
           .listing-product-detail__category
-            = i.label 'カテゴリー', class: 'listing-default__label'
-            %span.listing-default--require 必須
+            .listing-product-detail__title
+              .listing-default__label
+                カテゴリー
+              .listing-default--require
+                必須
             .listing-select-wrapper
               .listing-select-wrapper__box
                 = i.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}

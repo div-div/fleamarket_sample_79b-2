@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :category]
-  # before_action :set_category, only:[:category]
+  before_action :set_item, only: [:show]
   
   def index
   end
@@ -49,12 +48,7 @@ class ItemsController < ApplicationController
 　  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find(params[:child_id]).children
   end
-  
-  def category
-    #商品詳細からカテゴリーの商品一覧へ飛ぶメソッドアクション
-    @category_items = Item.where(category_id: params[:category_id])
-  end
-  
+    
   private 
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)

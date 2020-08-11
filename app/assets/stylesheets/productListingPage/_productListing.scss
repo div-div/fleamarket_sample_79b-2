@@ -116,7 +116,8 @@
       }
 // -----------商品詳細欄--------------------------------------
       &__itemDetail{
-        height: 420px;
+        height: 400px;
+        height: auto;
         @include layout;
         &__categoryArea{
           &__step{
@@ -391,17 +392,30 @@
   }
 }
 
+
 .listing-form-box{
   background-color: white;
   height: 100px;
+  height: auto;
 }
 
 .listing-default__label{
 
 }
-.listing-product-detail__category{
+
+.listing-product-detail{
+  &__category{
   font-weight: bold;
+  margin-top: 10px;
+  height: 100px;
+  height: auto;
+  }
+  &__title{
+    display: flex;
+    margin-top: 20px;
+  }
 }
+
 .listing-default--require{
   background-color: red;
   font-weight: bold;
@@ -412,13 +426,15 @@
   text-align: center;
   margin-left: 10px;
 }
-.listing-select-wrapper__box--select{
+.listing-select-wrapper{
+  margin-bottom: 10px;
+  &__box--select{
   font-weight: normal;
   height: 50px;
   width: calc(100% - 20px);
   display: inline-block;
   border: 1px solid #cecece;
-  margin-top: 10px;
+  margin: 10px 0;
   padding-left: 10px;
-  
+  }
 }
