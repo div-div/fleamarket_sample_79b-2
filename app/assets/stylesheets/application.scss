@@ -1,6 +1,5 @@
 @import "reset";
 @import "moduels/posts";
-@import "moduels/mainvisual";
 @import "moduels/reason";
 @import "posts";
 @import "font-awesome-sprockets";
@@ -8,6 +7,12 @@
 @import "show";
 @import "footer";
 @import "index";
-// @import "header";
-// @import "setting";
-// @import "productListing";
+@import "header";
+@import "sessions";
+@import "flash";
+@import "registrations";
+@import "productListingPage/header";
+@import "productListingPage/setting";
+@import "productListingPage/productListing";
+@import "main";
+@import "PickupCategory";

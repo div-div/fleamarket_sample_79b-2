@@ -1,0 +1,9 @@
+= render "layouts/header"
+- if user_signed_in?
+  .after-sign
+  = link_to "ログアウト", destroy_user_session_path, method: :delete
+- else
+  .before-sign
+  = link_to "新規登録", new_user_registration_path
+  = link_to "ログイン", new_user_session_path
+=link_to "出品する", new_item_path 
