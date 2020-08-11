@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @brand = Brand.new
-    # @item.brand.new
+    @item.build_brand
     @item.images.new
     @image = Item.includes(:images).order("created_at DESC")
   end
@@ -27,10 +27,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       # redirect_to root_path, notice: "更新しました"
-      redirect_to "/items/20/edit", notice: "更新しました"
+      redirect_to "/items/11/edit", notice: "更新しました"
     else
       # flash.now[:alert] = "no"
-      redirect_to "/items/20/edit", alert: "更新に失敗しました"
+      redirect_to "/items/11/edit", alert: "更新に失敗しました"
     end
   end
 
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url, :_destroy, :id]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)
+    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes:[:brand_name, :id]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)
   end
 
   def brand_params
