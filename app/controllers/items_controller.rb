@@ -2,11 +2,6 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-  end
-
   def new
     @item = Item.new
     @brand = Brand.new
@@ -18,7 +13,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @brand = Brand.new(brand_params)
     if @item.save
-      redirect_to new_item_path, notice: "出品が完了しました"
+      redirect_to items_path, notice: "出品が完了しました"
     else
       @item = Item.new(item_params)
       flash.now[:alert] = "no"
@@ -27,6 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def update
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   private
