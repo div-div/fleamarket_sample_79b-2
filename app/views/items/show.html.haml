@@ -54,11 +54,11 @@
                   %th
                     カテゴリー
                   %td
-                    = link_to items_category_path,class: "category" do
-                      = @item.category.ancester.ancester.name
-                    = link_to items_category_path, clas: "category" do
-                      = @item.category.ancester.name
-                    = link_to items_category_path, class: "category" do
+                    -# = link_to items_category_path,class: "category" do
+                    -#   = @item.category.ancester.ancester.name
+                    -# = link_to items_category_path, clas: "category" do
+                    -#   = @item.category.ancester.name
+                    -# = link_to items_category_path, class: "category" do
                 %tr
                   %th
                     ブランド
@@ -116,9 +116,10 @@
             = icon("fa", "angle-right")
       .relatedItems
         /*TODO 出品商品と同一カテゴリーの商品一覧へ飛ぶ*/
-        = link_to "#" do
-          = @item.category.category
+        = link_to "#" do 
+          -# = @item.category_id.name
           をもっとみる
+        -# = link_to "category_items_path" do (カテゴリーへのリンク)
         .relatedItems__lists
           .relatedItems__item
             = link_to "#" do 
