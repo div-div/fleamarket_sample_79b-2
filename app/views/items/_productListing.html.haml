@@ -37,14 +37,23 @@
 
       .Base__body__area__itemDetail
         商品の詳細
-        .Base__body__area__itemDetail__categoryArea
-          .Base__body__area__itemDetail__categoryArea__step
-            .Base__body__area__itemDetail__categoryArea__step__category
-              カテゴリー
-            .Base__body__area__itemDetail__categoryArea__step__mark
-              必須
-          = i.collection_select( :category_id, Category.all, :id, :category)
+        -# .Base__body__area__itemDetail__categoryArea
+          -# .Base__body__area__itemDetail__categoryArea__step
+          -#   .Base__body__area__itemDetail__categoryArea__step__category
+          -#     カテゴリー
+          -#   .Base__body__area__itemDetail__categoryArea__step__mark
+          -#     必須
+          -# = i.collection_select( :category_id, Category.all, :id, :category)
           -# = i.select :category_id, {"レディース":1, "メンズ":2, "ベビー・キッズ":3, "インテリア・住まい・小物":4, "本・音楽・ゲーム":5, "おもちゃ・ホビー・グッズ":6, "コスメ・香水・美容":7, "家電・スマホ・カメラ":8, "スポーツ・レジャー":9, "ハンドメイド":10, "チケット":11, "自動車・オートバイ":12, "その他":13}, {include_blank: "選択してください"}, {class: "Base__body__area__itemDetail__categoryArea__selectArea", required: true}
+        .listing-form-box
+          .listing-product-detail__category
+            = i.label 'カテゴリー', class: 'listing-default__label'
+            %span.listing-default--require 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
+                = i.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+
         .Base__body__area__itemDetail__brandArea
           .Base__body__area__itemDetail__brandArea__step
             .Base__body__area__itemDetail__brandArea__step__brand

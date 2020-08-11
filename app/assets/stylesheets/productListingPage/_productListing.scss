@@ -390,3 +390,35 @@
     }
   }
 }
+
+.listing-form-box{
+  background-color: white;
+  height: 100px;
+}
+
+.listing-default__label{
+
+}
+.listing-product-detail__category{
+  font-weight: bold;
+}
+.listing-default--require{
+  background-color: red;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+  height: 20px;
+  width: 30px;
+  text-align: center;
+  margin-left: 10px;
+}
+.listing-select-wrapper__box--select{
+  font-weight: normal;
+  height: 50px;
+  width: calc(100% - 20px);
+  display: inline-block;
+  border: 1px solid #cecece;
+  margin-top: 10px;
+  padding-left: 10px;
+  
+}

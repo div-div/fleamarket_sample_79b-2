@@ -14,11 +14,18 @@
 
   root to: "items#index"
   resources :items, only:[:index, :new, :create, :show, :edit, :update] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     resources :purchases, only:[:index] do
       collection do
         post 'payment', to: 'purchases#payment'
         get 'confirmation', to: 'purchases#confirmation'
       end
+    end
+    collection do
+      get "category", to: "items#category"
     end
   end
 end
