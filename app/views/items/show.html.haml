@@ -1,6 +1,5 @@
 .header
-  //TODO headerを読み込む
-  -# = render "posts/header"
+  = render "items/header"
   
 .main
   .showMain
@@ -188,9 +187,7 @@
         = image_tag "icon/mobile-app-ios.svg", class:"bannerDeoration__icon--ios" 
         = image_tag "icon/mobile-app-android.svg", class:"bannerDecoration__icon--adnroid"
 .footer
-  //TODO footerを読み込む
-  -# = render "layouts/footer"
-
+  = render "layouts/footer"
 -# TODO 新規出品を呼び出すアクションへ(new_item_path)
 = link_to new_item_path do
   .sellBtn
