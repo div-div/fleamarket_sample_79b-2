@@ -20,18 +20,17 @@
     display: flex;
     justify-content:space-around;
     background-color: white;
-    height: 200px;
+    height: 260px;
     &__item-box{
       display: flex;
       justify-content: space-between;
       // padding-top: 20px;
       text-decoration: none;
       &__image{
-        width: 200px;
-        height: 100px;
+        
         img{
-          width: 200px;
-          height: 100px
+          width: 220px;
+          height: 150px
         }
         .items-image{
           width:200px;
@@ -40,6 +39,7 @@
       }
       &__name{
         font-size: 12px;
+        padding-bottom: 12px;
         color:black;
       }
       &__prudcts{
