@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions:      'users/sessions',
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :purchases, only:[:index] do
       collection do
         post 'payment', to: 'purchases#payment'
+        get 'confirmation', to: 'purchases#confirmation'
       end
     end
   end
