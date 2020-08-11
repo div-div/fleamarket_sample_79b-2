@@ -54,19 +54,11 @@
                   %th
                     カテゴリー
                   %td
-                    = link_to items_url,class: "category" do
-                      = @item.category.category
-                    -# %br
-                    -# = linik_to items_url(@item.category), class: "category" do
-                    -#   @item.category
-                    -# %br
-                    -# = link_to items_url(@item.category), class: "category" do
-                    -#   @item.category
-                    -# ベビー・キッズ
-                    -# %br
-                    -# ベビー服
-                    -# %br
-                    -# アウター
+                    = link_to items_category_path,class: "category" do
+                      = @item.category.ancester.ancester.name
+                    = link_to items_category_path, clas: "category" do
+                      = @item.category.ancester.name
+                    = link_to items_category_path, class: "category" do
                 %tr
                   %th
                     ブランド

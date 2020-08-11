@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :category]
   # before_action :set_category, only:[:category]
   
   def index
@@ -51,7 +51,8 @@ class ItemsController < ApplicationController
   end
   
   def category
-    #商品詳細からカテゴリーの商品一覧へ飛ぶメソッドアクション 
+    #商品詳細からカテゴリーの商品一覧へ飛ぶメソッドアクション
+    @category_items = Item.where(category_id: params[:category_id])
   end
   
   private 
