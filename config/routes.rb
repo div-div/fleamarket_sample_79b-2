@@ -2,8 +2,9 @@
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions:      'users/sessions',
-
   }
+  resources :users, only:[:show]
+
   devise_scope :user do
     get 'profiles', to: 'users/registrations#new_profile'
     post 'profiles', to: 'users/registrations#create_profile'
