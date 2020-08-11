@@ -27,10 +27,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       # redirect_to root_path, notice: "更新しました"
-      redirect_to "/items/15/edit", notice: "更新しました"
+      redirect_to "/items/20/edit", notice: "更新しました"
     else
       # flash.now[:alert] = "no"
-      redirect_to "/items/15/edit", alert: "更新に失敗しました"
+      redirect_to "/items/20/edit", alert: "更新に失敗しました"
     end
   end
 

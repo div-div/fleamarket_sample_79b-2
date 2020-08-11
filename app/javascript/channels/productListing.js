@@ -1,6 +1,6 @@
 // const { data } = require("jquery");
-
-$(function(){
+$(document).on('turbolinks:load', ()=> {
+// $(function(){
   $(".Base__body__area__item__informationArea__space").on('keyup', function(){
     $(".Base__body__area__item__informationArea__number").text($(this).val().length + "/1000");
   });
@@ -42,15 +42,14 @@ $(function(){
 // ---------------削除----------------------------------削除---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__delete", function(){
     const targetIndex = $(this).parent().parent().data("index")
-    console.log(this)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop("checked, true");
 
     $(this).parent().parent().remove();
-    $(this).remove();
+    // $(this).remove();
     $(`imag[data-index="${targetIndex}"]`).remove();
 
-    if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
+    // if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
   });
 // ---------------プレビュー----------------------------------プレビュー---------------------------------------------
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
@@ -66,6 +65,7 @@ $(function(){
       $("#image-box").append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-    }
+    };
+    if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
   });
 })
