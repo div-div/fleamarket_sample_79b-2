@@ -38,18 +38,22 @@ $(document).on('turbolinks:load', ()=> {
   lastIndex = $("#iconArea-js.last").data("index");
   fileIndex.splice(0, lastIndex);
 
-  $(".hidden-destroy").hide();
+  // $(".hidden-destroy").hide();
 // ---------------削除----------------------------------削除---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__delete", function(){
     const targetIndex = $(this).parent().parent().data("index")
+    console.log(targetIndex)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    if (hiddenCheck) hiddenCheck.prop("checked, true");
+    // hiddenCheck.trigger('click');
+    // if (hiddenCheck) hiddenCheck.prop("checked, true");
+    // $(`input[data-index="${targetIndex}"].hidden-destroy`).prop("checked, true");
+    if(hiddenCheck)hiddenCheck.prop("checked", true);
 
     $(this).parent().parent().remove();
-    // $(this).remove();
     $(`imag[data-index="${targetIndex}"]`).remove();
 
-    // if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
+    if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
+
   });
 // ---------------プレビュー----------------------------------プレビュー---------------------------------------------
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
@@ -66,6 +70,15 @@ $(document).on('turbolinks:load', ()=> {
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
     };
-    if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
+  });
+// ---------------編集----------------------------------編集---------------------------------------------
+  $("#image-box").on("click", ".Preview__wrapper__btn__edit", function(e){
+    const targetIndex = $(this).parent().parent().data("index");
+    // const file = e.target.files[targetIndex];
+    const blobUrl = window.URL.createObjectURL(file);
+    $("#previews").append(buildImg(targetIndex, blobUrl));
+    // $("#image-box").append(buildFileField(fileIndex[0]));
+    // img.setAttribute("image_url", blobUrl);
+
   });
 })
