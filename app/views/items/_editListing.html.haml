@@ -22,15 +22,15 @@
                     .Preview__wrapper__btn__edit
                       編集
 
-          = i.fields_for :images do |k|
-            #iconArea-js{"data-index" => "#{k.index}"}
-              = k.label :image_url, class: "Base__body__area__picture__iconArea" do
-                -# = icon('fas','camera')
-                = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
-                .Base__body__area__picture__iconArea__text
-                  -# ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                - if @item.persisted?
-                  = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
+          -# = i.fields_for :images do |k|
+          -#   #iconArea-js{"data-index" => "#{k.index}"}
+          -#     = k.label :image_url, class: "Base__body__area__picture__iconArea" do
+          -#       -# = icon('fas','camera')
+          -#       = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
+          -#       .Base__body__area__picture__iconArea__text
+          -#         -# ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+          -#       - if @item.persisted?
+          -#         = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
           - if @item.persisted?
             #iconArea-js{"data-index" => "#{@item.images.count}"}
               = i.fields_for :images do |k|

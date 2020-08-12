@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', ()=> {
   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  lastIndex = $("#iconArea-js.last").data("index");
+  lastIndex = $("#iconArea-js:last").data("index");
   fileIndex.splice(0, lastIndex);
 
   $(".hidden-destroy").hide();
@@ -59,6 +59,9 @@ $(document).on('turbolinks:load', ()=> {
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
     $(".Base__body__area__picture__iconArea").css({"display":"none"});
     const targetIndex = $(this).parent().parent().data("index");
+    // console.log(targetIndex)--------- 3
+    // console.log(fileIndex[0])---------- 1
+    console.log(fileIndex[0])
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 
@@ -66,6 +69,7 @@ $(document).on('turbolinks:load', ()=> {
       img.setAttribute("image_url", blobUrl);
     } else {
       $("#previews").append(buildImg(targetIndex, blobUrl));
+      // console.log(fileIndex[0])------ 1
       $("#image-box").append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
