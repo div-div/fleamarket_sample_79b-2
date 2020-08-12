@@ -12,19 +12,14 @@ class ItemsController < ApplicationController
     @item = Item.new
     @brand = Brand.new
     @item.images.new
-    #セレクトボックスの初期値設定
+
     @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-    @category_parent_array << parent.name
-    end       
+    #Categoryデータベースから、親カテゴリーのみ抽出し、配列化
+    @category_parent_array + Category.where(ancestry: nil).pluck(:name)    
   end
   
   def create
     @brand = Brand.create(brand_params)
-    # if
-    
-    # else
     @item = Item.new(item_params)
     if @item.save!
       redirect_to item_path(@item.id), notice: "ok"
