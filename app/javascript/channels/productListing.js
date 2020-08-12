@@ -1,5 +1,12 @@
 // const { data } = require("jquery");
 $(document).on('turbolinks:load', ()=> {
+
+  var cam = Array.from(document.getElementsByClassName('fa-camera'))
+  cam.pop()
+  cam.forEach(function(cam1){
+    $(cam1).hide()
+  })
+  
 // $(function(){
   $(".Base__body__area__item__informationArea__space").on('keyup', function(){
     $(".Base__body__area__item__informationArea__number").text($(this).val().length + "/1000");
