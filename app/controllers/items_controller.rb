@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @brand = Brand.new
     @item.images.new
-    @image = Item.includes(:images).order("created_at DESC")
+    @items = Item.includes(:images).order("created_at DESC")
   end
   
   def create
@@ -33,8 +33,11 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    redirect_to items_path, notice: "商品を削除しました"
+    if item.destroy
+      redirect_to items_path, notice: "商品を削除しました"
+    else
+      flash.now[:alert] = "削除できませんでした"
+    end
   end
 
   def edit
