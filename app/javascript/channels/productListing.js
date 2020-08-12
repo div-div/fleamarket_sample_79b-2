@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', ()=> {
   lastIndex = $("#iconArea-js.last").data("index");
   fileIndex.splice(0, lastIndex);
 
-  // $(".hidden-destroy").hide();
+  $(".hidden-destroy").hide();
 // ---------------削除----------------------------------削除---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__delete", function(){
     const targetIndex = $(this).parent().parent().data("index")
