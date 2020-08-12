@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', ()=> {
   }
 
   const buildImg = (index, url)=> {
-    const html = `<div class="Preview__wrapper"><img data-index="${index}" src="${url}" width="100px" height="80px">
+    const html = `<div class="Preview__wrapper" data-index="${index}"><img data-index="${index}" src="${url}" width="100px" height="80px">
                   <div class="Preview__wrapper__btn"><div class="Preview__wrapper__btn__delete">削除</div><div class="Preview__wrapper__btn__edit">編集</div></div></div>
                   `;
     return html;
@@ -78,9 +78,13 @@ $(document).on('turbolinks:load', ()=> {
 // ---------------編集----------------------------------編集---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__edit", function(e){
     const targetIndex = $(this).parent().parent().data("index");
+    $("#item_images_attributes_" + targetIndex + "_image_url").click();
+    console.log(".item_images_attributes_" + targetIndex + "_image_url")
     // const file = e.target.files[targetIndex];
-    const blobUrl = window.URL.createObjectURL(file);
-    $("#previews").append(buildImg(targetIndex, blobUrl));
+
+    // const blobUrl = window.URL.createObjectURL(file);
+    // $("#previews").append(buildImg(targetIndex, blobUrl));
+
     // $("#image-box").append(buildFileField(fileIndex[0]));
     // img.setAttribute("image_url", blobUrl);
 

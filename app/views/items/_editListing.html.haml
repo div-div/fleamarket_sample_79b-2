@@ -29,14 +29,17 @@
           -#       = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
           -#       .Base__body__area__picture__iconArea__text
           -#         -# ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-          -#       - if @item.persisted?
-          -#         = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
+                -# - if @item.persisted?
+                -#   = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
           - if @item.persisted?
+            -# #iconArea-js{"data-index" => "30"}-------アイコン郡のdata-index=30, 個数=4
             #iconArea-js{"data-index" => "#{@item.images.count}"}
               = i.fields_for :images do |k|
                 = k.label :image_url, class: "Base__body__area__picture__iconArea" do
                   = icon('fas','camera')
                   = k.file_field :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: "Base__body__area__picture__iconArea__pictureArea"
+                  - if @item.persisted?
+                    = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
 
       .Base__body__area__item
         .Base__body__area__item__nameArea
