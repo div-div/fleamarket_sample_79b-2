@@ -12,8 +12,12 @@
     post 'addresses', to: 'users/registrations#create_address'
   end
   root to: "items#index"
-  resources :users, only:[:show]
-  resources :items, only:[:index, :new, :create, :show, :edit, :update, :destroy] do
+
+  resources :items, only:[:index, :new, :create, :show, :edit, :update] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     resources :purchases, only:[:index] do
       collection do
         post 'payment', to: 'purchases#payment'
