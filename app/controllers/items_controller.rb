@@ -45,8 +45,10 @@ class ItemsController < ApplicationController
 
   # 子カテゴリーが選択された後に呼び出されるアクション
   def get_category_grandchildren
-　  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-    @category_grandchildren = Category.find(params[:child_id]).children
+    @key = params[:child_id].to_i
+    #@key には整数が入っている・・・なぜundefined method?
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find(@key).children
   end
     
   private 
