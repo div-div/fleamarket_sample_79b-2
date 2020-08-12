@@ -1,7 +1,6 @@
 class Category < ActiveHash::Base
   include ActiveHash::Associations
   field :category
-  add id: 0, category: "選択してください"
   add id: 1, category: "レディース"
   add id: 2, category: "メンズ"
   add id: 3, category: "ベビー・キッズ"

@@ -28,7 +28,7 @@
           // 自分以外のユーザー(ゲストも含む)のとき購入確認画面であるpurchaseコントローラー(confirmationアクション)を呼び出す。ログインしているか判定し、クレジットカード決済登録ページか購入確認画面に分岐させる。
           - if (current_user == nil)||(current_user.id != @item.seller_id)
             .itemBox__buyBtn
-              = link_to "/" do 
+              = link_to "/" do
                 購入
           - elsif @item.status.id == 2
             .itemBox__buyBtn--disabled 
@@ -36,7 +36,7 @@
                 売り切れ
           - elsif current_user.id == @item.user_id
             .itemBox__editBtn
-              = link_to edit_item_path do
+              = link_to item_path, method: "DELETE", data: {confirm: "削除しますか？"} do
                 編集  削除
 
           .itemBox__description
