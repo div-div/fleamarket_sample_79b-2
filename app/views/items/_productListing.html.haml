@@ -10,12 +10,18 @@
               必須
           .Base__body__area__picture__text__explain
             最大10枚までアップロードできます
+        #image-box
+          #previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, x|
+                = image_tag image.image_url.url, data: { index: x }, width: "100", height: "80"
           = i.fields_for :images do |k|
-            = k.label :image_url, class: "Base__body__area__picture__iconArea" do
-              = icon('fas','camera')
-              = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
-              .Base__body__area__picture__iconArea__text
-                ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+            #iconArea-js{"data-index" => "#{k.index}"}
+              = k.label :image_url, class: "Base__body__area__picture__iconArea" do
+                = icon('fas','camera')
+                = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
+                .Base__body__area__picture__iconArea__text
+                  ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
 
       .Base__body__area__item
         .Base__body__area__item__nameArea
@@ -37,14 +43,7 @@
 
       .Base__body__area__itemDetail
         商品の詳細
-        -# .Base__body__area__itemDetail__categoryArea
-          -# .Base__body__area__itemDetail__categoryArea__step
-          -#   .Base__body__area__itemDetail__categoryArea__step__category
-          -#     カテゴリー
-          -#   .Base__body__area__itemDetail__categoryArea__step__mark
-          -#     必須
-          -# = i.collection_select( :category_id, Category.all, :id, :category)
-          -# = i.select :category_id, {"レディース":1, "メンズ":2, "ベビー・キッズ":3, "インテリア・住まい・小物":4, "本・音楽・ゲーム":5, "おもちゃ・ホビー・グッズ":6, "コスメ・香水・美容":7, "家電・スマホ・カメラ":8, "スポーツ・レジャー":9, "ハンドメイド":10, "チケット":11, "自動車・オートバイ":12, "その他":13}, {include_blank: "選択してください"}, {class: "Base__body__area__itemDetail__categoryArea__selectArea", required: true}
+
         .listing-form-box
           .listing-product-detail__category
             .listing-product-detail__title
@@ -55,7 +54,6 @@
             .listing-select-wrapper
               .listing-select-wrapper__box
                 = i.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-                -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
 
         .Base__body__area__itemDetail__brandArea
           .Base__body__area__itemDetail__brandArea__step
@@ -70,8 +68,8 @@
               商品の状態
             .Base__body__area__itemDetail__conditionArea__step__mark
               必須
-          = i.collection_select( :item_condition_id, ItemCondition.all, :id, :condition)
-          -# = i.select :item, {"新品、未使用":1, "未使用に近い":2, "目立った傷や汚れなし":3, "やや傷や汚れあり":4, "傷や汚れあり":5, "全体的に状態が悪い":6}, {include_blank: "選択してください"}, {class: "Base__body__area__itemDetail__conditionArea__selectArea", required: true}
+          = i.collection_select( :item_condition_id, ItemCondition.all, :id, :condition, {prompt: "選択してください"})
+          
       
       .Base__body__area__delivery
         配送について
@@ -83,8 +81,7 @@
             .Base__body__area__delivery__feeArea__step__mark
               必須
           .Base__body__area__delivery__feeArea__selectArea
-            = i.collection_select( :delivery_cost_id, DeliveryCost.all, :id, :deliveryCost)
-            -# = i.select :item, {"送料込み(出品者負担)":1, "着払い(購入者負担)":2}, {include_blank: "選択してください"}, {class: "Base__body__area__delivery__feeArea__selectArea", required: true}
+            = i.collection_select( :delivery_cost_id, DeliveryCost.all, :id, :deliveryCost, {prompt: "選択してください"})
         .Base__body__area__delivery__regionArea
           .Base__body__area__delivery__regionArea__step
             .Base__body__area__delivery__regionArea__step__region
@@ -92,8 +89,7 @@
             .Base__body__area__delivery__regionArea__step__mark
               必須
           .Base__body__area__delivery__regionArea__selectArea
-            = i.collection_select( :seller_region_id, SellerRegion.all, :id, :prefercture)
-            -# = i.select :region, Item.regions.keys, {include_blank: "選択してください"}, {class: "Base__body__area__delivery__regionArea__selectArea", required: true}
+            = i.collection_select( :seller_region_id, SellerRegion.all, :id, :prefercture, {prompt: "選択してください"})
         .Base__body__area__delivery__daysArea
           .Base__body__area__delivery__daysArea__step
             .Base__body__area__delivery__daysArea__step__days
@@ -101,8 +97,7 @@
             .Base__body__area__delivery__daysArea__step__mark
               必須
           .Base__body__area__delivery__daysArea__selectArea
-            = i.collection_select( :preparation_for_shipment_id, PreparationForShipment.all, :id, :day)
-            -# = i.select :item, {"1~2日で発送":1, "2~3日で発送":2, "4~7日で発送":3}, {include_blank: "選択してください"}, {class: "Base__body__area__delivery__daysArea__selectArea", required: true}
+            = i.collection_select( :preparation_for_shipment_id, PreparationForShipment.all, :id, :day, {prompt: "選択してください"})
       
       .Base__body__area__price
         価格（¥300〜9,999,999）
@@ -118,7 +113,6 @@
               ¥
             .Base__body__area__price__sellingPriceArea__inputStep__selectArea
               = i.number_field :price, placeholder: 0, in: 300.0..9999999.0, step: 1.0, id: "price"
-            -# %input.Base__body__area__price__sellingPriceArea__inputStep__selectArea{name: "price", type: "number", placeholder: 0}
         .Base__body__area__price__chargeArea
           .Base__body__area__price__chargeArea__charge
             販売手数料（10%）

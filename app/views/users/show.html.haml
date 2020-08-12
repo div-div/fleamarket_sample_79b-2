@@ -1,5 +1,5 @@
 .header
-  -# renderで追加
+  = render "items/header"
 .wrapper
   .main
     .side-lists
@@ -49,7 +49,7 @@
           = link_to "#", class: "icon" do
             =icon('fas', 'user')
         .user-name
-          aaaa
+          = current_user.nickname
       .main-contents__content
         %h1 お知らせ
         %ul
