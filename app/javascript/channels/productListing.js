@@ -42,11 +42,9 @@ $(document).on('turbolinks:load', ()=> {
 // ---------------削除----------------------------------削除---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__delete", function(){
     const targetIndex = $(this).parent().parent().data("index")
-    console.log(targetIndex)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // hiddenCheck.trigger('click');
-    // if (hiddenCheck) hiddenCheck.prop("checked, true");
-    // $(`input[data-index="${targetIndex}"].hidden-destroy`).prop("checked, true");
+  
     if(hiddenCheck)hiddenCheck.prop("checked", true);
 
     $(this).parent().parent().remove();
@@ -57,29 +55,24 @@ $(document).on('turbolinks:load', ()=> {
   });
 // ---------------プレビュー----------------------------------プレビュー---------------------------------------------
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
-    $(".Base__body__area__picture__iconArea").css({"display":"none"});
     const targetIndex = $(this).parent().parent().data("index");
-    // console.log(targetIndex)--------- 3
-    // console.log(fileIndex[0])---------- 1
-    console.log(fileIndex[0])
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]){
-      img.setAttribute("image_url", blobUrl);
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute("src", blobUrl);
     } else {
       $("#previews").append(buildImg(targetIndex, blobUrl));
-      // console.log(fileIndex[0])------ 1
       $("#image-box").append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
     };
+    $("#item_images_attributes_" + targetIndex + "_image_url").parent().css({"display":"none"});
   });
 // ---------------編集----------------------------------編集---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__edit", function(e){
     const targetIndex = $(this).parent().parent().data("index");
     $("#item_images_attributes_" + targetIndex + "_image_url").click();
-    console.log(".item_images_attributes_" + targetIndex + "_image_url")
     // const file = e.target.files[targetIndex];
 
     // const blobUrl = window.URL.createObjectURL(file);
