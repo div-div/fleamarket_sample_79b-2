@@ -4,15 +4,14 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def show  
+  def show 
+    @related_items = Item.where(category_id: params[:category_id]).limit(3)
   end
   
   def new
     @item = Item.new
     @brand = Brand.new
     @item.images.new
-    # @items = Item.includes(:images)
-    
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
@@ -22,9 +21,12 @@ class ItemsController < ApplicationController
   end
   
   def create
+    @brand = Brand.create(brand_params)
+    # if
+    
+    # else
     @item = Item.new(item_params)
-    @brand = Brand.new(brand_params)
-    if @item.save
+    if @item.save!
       redirect_to item_path(@item.id), notice: "ok"
     else
       # flash.now[:alert] = "no"
@@ -36,7 +38,6 @@ class ItemsController < ApplicationController
   def update
   end
   
-  # 親カテゴリーが選択された後に呼び出されるアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
@@ -46,14 +47,12 @@ class ItemsController < ApplicationController
   # 子カテゴリーが選択された後に呼び出されるアクション
   def get_category_grandchildren
     @key = params[:child_id].to_i
-    #@key には整数が入っている・・・なぜundefined method?
-    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find(@key).children
   end
     
   private 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)
+    params.require(:item).permit(:name, :description, :category_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1, brand_id: @brand.id)
   end
   
   def set_item
@@ -63,5 +62,6 @@ class ItemsController < ApplicationController
   def brand_params
     params.require(:item).permit(:brand_name)  
   end
-  
 end
+
+#brandsテーブルに保存してからitemsテーブルに保存する。
