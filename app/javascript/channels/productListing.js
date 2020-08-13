@@ -1,4 +1,3 @@
-// const { data } = require("jquery");
 $(document).on('turbolinks:load', ()=> {
 
   var cam = Array.from(document.getElementsByClassName('fa-camera'))
@@ -40,40 +39,38 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
 
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  lastIndex = $("#iconArea-js:last").data("index");
-  fileIndex.splice(0, lastIndex);
+  // let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  // lastIndex = $("#iconArea-js:last").data("index");
+  // fileIndex.splice(0, lastIndex);
 
   $(".hidden-destroy").hide();
 // ---------------削除----------------------------------削除---------------------------------------------
   $("#image-box").on("click", ".Preview__wrapper__btn__delete", function(){
     const targetIndex = $(this).parent().parent().data("index")
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // hiddenCheck.trigger('click');
   
     if(hiddenCheck) hiddenCheck.prop("checked", true);
 
     $(this).parent().parent().remove();
     $(`imag[data-index="${targetIndex}"]`).remove();
 
-    if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
+    // if ($(".Base__body__area__picture__iconArea__pictureArea").length == 0) $("#image-box").append(buildFileField(fileIndex[0]));
 
   });
 // ---------------プレビュー----------------------------------プレビュー---------------------------------------------
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
     const targetIndex = $(this).parent().parent().data("index");
+    console.log(targetIndex)
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute("src", blobUrl);
     } else {
-      // $("#previews").append(buildImg(targetIndex, blobUrl));
-      // $("#image-box").append(buildFileField(fileIndex[targetIndex]));
       $("#previews").append(buildImg(targetIndex, blobUrl));
-      $("#image-box").append(buildFileField(fileIndex[0]));
-      fileIndex.shift();
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      $("#image-box").append(buildFileField(targetIndex + 1));
+      // fileIndex.shift();
+      // fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
     };
     $("#item_images_attributes_" + targetIndex + "_image_url").parent().css({"display":"none"});
   });
@@ -81,10 +78,5 @@ $(document).on('turbolinks:load', ()=> {
   $("#image-box").on("click", ".Preview__wrapper__btn__edit", function(e){
     const targetIndex = $(this).parent().parent().data("index");
     $("#item_images_attributes_" + targetIndex + "_image_url").click();
-    
-    // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-    //   img.setAttribute("src", blobUrl);
-    // };
-  
   });
 })
