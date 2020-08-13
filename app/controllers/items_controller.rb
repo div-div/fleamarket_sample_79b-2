@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+
   end
 
   def new
@@ -19,6 +20,16 @@ class ItemsController < ApplicationController
       flash.now[:alert] = "no"
       redirect_to new_item_path, alert: "必須項目は全て入力してください"
     end
+  end
+
+  def pay
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    charge = Payjp::Charge.create(
+    amount: @item.price,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+    redirect_to action: :done
   end
 
   def update

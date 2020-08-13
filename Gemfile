@@ -85,3 +85,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 end
+gem 'fog-aws'
+gem 'carrierwave'
+gem 'payjp'
+gem 'dotenv-rails'
+gem "jquery-rails"
