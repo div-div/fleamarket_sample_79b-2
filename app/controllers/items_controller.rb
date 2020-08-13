@@ -42,7 +42,6 @@ class ItemsController < ApplicationController
   end
   
   def update
-    @image = Image.find(params[:id])
 
     if @item.update(item_params) && @item.user_id == current_user.id
       redirect_to edit_item_path, notice: "更新しました"
