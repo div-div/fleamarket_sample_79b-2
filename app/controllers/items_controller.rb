@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     @brand = Brand.new(brand_params)
 
     if @item.save
-      redirect_to new_item_path, notice: "出品が完了しました"
+      redirect_to root_path, notice: "出品が完了しました"
     elsif @item.images.length > 10 || @item.images.length == 0
       redirect_to new_item_path, alert: "画像は1~10枚にしてください"
     elsif @item.name.length == 0 || @item.name.length > 40
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
     @image = Image.find(params[:id])
 
     if @item.update(item_params) && @item.user_id == current_user.id
-      redirect_to "/items/11/edit", notice: "更新しました"
+      redirect_to edit_item_path, notice: "更新しました"
     elsif @item.images.length > 10 || @item.images.length == 0
       redirect_to edit_item_path, alert: "画像は1~10枚にしてください"
     elsif @item.name.length == 0 || @item.name.length > 40
