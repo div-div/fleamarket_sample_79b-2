@@ -10,7 +10,7 @@
         %li.list
           = link_to "お知らせ", "#", class: "list__link"
         %li.list
-          = link_to "出品する", "#", class: "list__link"
+          = link_to "出品する", new_item_path, class: "list__link"
         %li.list
           = link_to "出品した商品 - 出品中", "#", class: "list__link"
         %li.list
@@ -41,7 +41,7 @@
         %li.list
           = link_to "電話番号の確認", "#", class: "list__link"
         %li.list
-          = link_to "ログアウト", "#", class: "list__link"
+          = link_to "ログアウト", destroy_user_session_path, class: "header-link", method: :delete
 
     .main-contents
       .main-contents__user-info

@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
+  before_action :set_item, only: [:confirmation, :pay]
   before_action :logged_in?, only: [:confirmation, :pay]
   before_action :card_holder?, only: [:confirmation, :pay]
   before_action :out_of_stock?, only: [:confirmation, :pay]
-  before_action :set_item, only: [:confirmation, :pay]
 
   require 'payjp'
 
