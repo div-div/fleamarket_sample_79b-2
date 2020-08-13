@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :update, :edit]
   
   def index
     @new_items = Item.where(status_id: 1).order(id: "DESC").limit(5)
@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @brand = Brand.new
+    @item.build_brand
     @item.images.new
 
     @category_parent_array = ["---"]
@@ -21,19 +22,47 @@ class ItemsController < ApplicationController
   end
   
   def create
-    @brand = Brand.create(brand_params)
     @item = Item.new(item_params)
+    @brand = Brand.new(brand_params)
 
-    if @item.save!
-      redirect_to items_path, notice: "出品が完了しました"
+    if @item.save
+      redirect_to root_path, notice: "出品が完了しました"
+    elsif @item.images.length > 10 || @item.images.length == 0
+      redirect_to new_item_path, alert: "画像は1~10枚にしてください"
+    elsif @item.name.length == 0 || @item.name.length > 40
+      flash.now[:alert] = "名前は1~40文字で入力してください"
+      render action: :new
+    elsif @item.description.length == 0 || @item.description.length > 1000
+      flash.now[:alert] = "商品説明は1~1000文字で入力してください"
+      render action: :new
     else
-      @item = Item.new(item_params)
-      flash.now[:alert] = "no"
-      redirect_to new_item_path, alert: "必須項目は全て入力してください"
+      flash.now[:alert] = "必須項目は全て入力してください"
+      render action: :new
     end
   end
   
   def update
+
+    if @item.update(item_params) && @item.user_id == current_user.id
+      redirect_to edit_item_path, notice: "更新しました"
+    elsif @item.images.length > 10 || @item.images.length == 0
+      redirect_to edit_item_path, alert: "画像は1~10枚にしてください"
+    elsif @item.name.length == 0 || @item.name.length > 40
+      flash.now[:alert] = "名前は1~40文字で入力してください"
+      render action: :edit
+    elsif @item.description.length == 0 || @item.description.length > 1000
+      flash.now[:alert] = "商品説明は1~1000文字で入力してください"
+      render action: :edit
+    else
+      flash.now[:alert] = "必須項目は全て入力してください"
+      render action: :edit
+    end
+  end
+
+  def edit
+    @item.images.build
+    @brand = Brand.new
+    @item.build_brand
   end
   
   def get_category_children
@@ -66,7 +95,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1, brand_id: @brand.id)
+    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes:[:brand_name, :id]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)
   end
   
   def set_item
