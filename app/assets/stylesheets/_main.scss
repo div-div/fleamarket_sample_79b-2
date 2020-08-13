@@ -149,17 +149,17 @@
   background-color: #3CCACE;
   text-align: center;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
   position: fixed;
   bottom: 40px;
   right:40px;
   &__text{
-    // font-size: 20px;
+    font-size: 20px;
+
   }
   &__icon{
     color:white;
     font-size: 60px;
-    margin: -17px;
   }
 }
 .func-link{
