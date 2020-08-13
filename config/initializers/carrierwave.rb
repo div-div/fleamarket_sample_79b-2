@@ -4,6 +4,8 @@ require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
   config.storage = :file
+  # AWSにアップする場合は上をfogに変える
+  
   # config.fog_provider = 'fog/aws'
   # config.fog_credentials = {
   #   provider: 'AWS',
