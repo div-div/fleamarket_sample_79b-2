@@ -14,21 +14,24 @@
           #previews
             - if @item.persisted?
               - @item.images.each_with_index do |image, x|
-                = image_tag image.image_url.url, data: { index: x }, width: "100", height: "80"
+                .Preview__wrapper{"data-index" => "#{x}"}
+                  -if image.persisted?
+                    = image_tag image.image_url.url, data: { index: x }, width: "100", height: "80", id: "preview_image"
+                    .Preview__wrapper__btn
+                      .Preview__wrapper__btn__delete
+                        削除
+                      .Preview__wrapper__btn__edit
+                        編集
+
           = i.fields_for :images do |k|
             #iconArea-js{"data-index" => "#{k.index}"}
               = k.label :image_url, class: "Base__body__area__picture__iconArea" do
                 = icon('fas','camera')
                 = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
                 .Base__body__area__picture__iconArea__text
-                  ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                - if @item.persisted?
+                - if k.object.persisted?
                   = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
-          -# #forEdit
-          -#   - if @item.persisted?
-          -#     #iconArea-js{"data-index" => "#{@item.images.count}"}
-          -#       = file_field_tag :image_url, name: "item[images_attributes][#{@item.k.count}][image_url]", class: "Base__body__area__picture__iconArea__pictureArea"
-
+      
       .Base__body__area__item
         .Base__body__area__item__nameArea
           .Base__body__area__item__nameArea__step
@@ -49,18 +52,13 @@
 
       .Base__body__area__itemDetail
         商品の詳細
-
-        .listing-form-box
-          .listing-product-detail__category
-            .listing-product-detail__title
-              .listing-default__label
-                カテゴリー
-              .listing-default--require
-                必須
-            .listing-select-wrapper
-              .listing-select-wrapper__box
-                = i.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
+        .Base__body__area__itemDetail__categoryArea
+          .Base__body__area__itemDetail__categoryArea__step
+            .Base__body__area__itemDetail__categoryArea__step__category
+              カテゴリー
+            .Base__body__area__itemDetail__categoryArea__step__mark
+              必須
+          = i.collection_select( :category_id, Category.all, :id, :category, {prompt: "選択してください"})
         .Base__body__area__itemDetail__brandArea
           .Base__body__area__itemDetail__brandArea__step
             .Base__body__area__itemDetail__brandArea__step__brand
@@ -132,7 +130,7 @@
             ー
 
       .Base__body__area__buttonArea
-        = i.submit "出品する", class:"Base__body__area__buttonArea__exhibit"
+        = i.submit "更新する", class:"Base__body__area__buttonArea__update"
         = i.submit "下書きに保存", class:"Base__body__area__buttonArea__save"
         = link_to "もどる",root_path, class: "Base__body__area__buttonArea__back"
 

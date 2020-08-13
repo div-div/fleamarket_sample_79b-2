@@ -8,8 +8,8 @@ require("turbolinks").start()
 require("jquery")
 require("@rails/activestorage").start()
 require("channels")
-import("../channels/productListing")
 import("../channels/category")
+require("../channels/productListing")
 
 
 
