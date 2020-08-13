@@ -1,5 +1,4 @@
 = render "items/header"
-
 .main
   .showMain
     .content
@@ -39,7 +38,6 @@
             .itemBox__buyBtn--disabled 
               = link_to "/" do
                 売り切れ
-
           .itemBox__description
             = @item.description
           .itemBox__infoGroup
@@ -55,25 +53,16 @@
                   %th
                     カテゴリー
                   %td
-                    = link_to items_url,class: "category" do
-                      あああ
-                      -# = @item.category.category
-                    -# %br
-                    -# = linik_to items_url(@item.category), class: "category" do
-                    -#   @item.category
-                    -# %br
-                    -# = link_to items_url(@item.category), class: "category" do
-                    -#   @item.category
-                    -# ベビー・キッズ
-                    -# %br
-                    -# ベビー服
-                    -# %br
-                    -# アウター
+                    = @item.category.parent.parent.name
+                    %br
+                    = @item.category.parent.name
+                    %br
+                    = @item.category.name
                 %tr
                   %th
                     ブランド
                   %td
-                    = @item.brand
+                    = @item.brand.brand_name
                 %tr
                   %th
                     商品の状態
@@ -125,47 +114,25 @@
             %span 後ろの商品
             = icon("fa", "angle-right")
       .relatedItems
-        /*TODO 出品商品と同一カテゴリーの商品一覧へ飛ぶ*/
-        = link_to "#" do
-          -# = @item.category.category
-          あああ
-          をもっとみる
+        = @item.category.name
+        をもっとみる
         .relatedItems__lists
           .relatedItems__item
-            = link_to "#" do 
-              %figure.relatedItems__itemImage
-                = image_tag "pict/pict-reason-01.jpg"
-              .relatedItems__itemInfo
-                %h3.relatedItems__itemName
-                  -# = @realated_items.name
-                  test
-                .relatedItems__infoDetails
-                  %ul
-                    %li
-                      -# = @related_items.price
-                      1000
-                    %li
-                      =icon("fa", "star",class:"likeIcon")
-                      0
-                  %p 
-                    (税込み)
-            /*TODO 関連商品のリンクに飛ぶ*/
-          .relatedItems__item
-            = link_to items_url do 
-              %figure.relatedItems__itemImage
-                = image_tag "pict/pict-reason-01.jpg"
-              .relatedItems__itemInfo
-                %h3.relatedItems__itemName
-                  example2
-                  //@related_items.name
-                .relatedItems__infoDetails
-                  %ul
-                    %li
-                      1000円
-                    %li
-                      =icon("fa", "star",class:"likeIcon")
-                      1
-                  %p 
+            - @related_items.each do |item|
+              = link_to "#" do 
+                %figure.relatedItems__itemImage
+                  = image_tag "#{@item.images[0].image_url}"
+                .relatedItems__itemInfo
+                  %h3.relatedItems__itemName
+                    = item.name
+                  .relatedItems__infoDetails
+                    %ul
+                      %li
+                        = item.price
+                      %li
+                        =icon("fa", "star",class:"likeIcon")
+                        0
+                    %p 
                     (税込み)
 %aside.appBanner
   .bannerDecoration
