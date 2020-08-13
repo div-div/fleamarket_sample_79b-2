@@ -54,7 +54,6 @@ $(document).on('turbolinks:load', ()=> {
 // ---------------プレビュー----------------------------------プレビュー---------------------------------------------
   $("#image-box").on("change", ".Base__body__area__picture__iconArea__pictureArea", function(e){
     const targetIndex = $(this).parent().parent().data("index");
-    console.log(targetIndex)
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 

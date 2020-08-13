@@ -49,18 +49,13 @@
 
       .Base__body__area__itemDetail
         商品の詳細
-
-        .listing-form-box
-          .listing-product-detail__category
-            .listing-product-detail__title
-              .listing-default__label
-                カテゴリー
-              .listing-default--require
-                必須
-            .listing-select-wrapper
-              .listing-select-wrapper__box
-                = i.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
+        .Base__body__area__itemDetail__categoryArea
+          .Base__body__area__itemDetail__categoryArea__step
+            .Base__body__area__itemDetail__categoryArea__step__category
+              カテゴリー
+            .Base__body__area__itemDetail__categoryArea__step__mark
+              必須
+          = i.collection_select( :category_id, Category.all, :id, :category, {prompt: "選択してください"})
         .Base__body__area__itemDetail__brandArea
           .Base__body__area__itemDetail__brandArea__step
             .Base__body__area__itemDetail__brandArea__step__brand
