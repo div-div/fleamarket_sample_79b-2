@@ -27,24 +27,10 @@
             #iconArea-js{"data-index" => "#{k.index}"}
               = k.label :image_url, class: "Base__body__area__picture__iconArea" do
                 = icon('fas','camera')
-                = k.file_field :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: "Base__body__area__picture__iconArea__pictureArea"
-
-              -# = k.label :image_url, class: "Base__body__area__picture__iconArea" do
-              -#   -# = icon('fas','camera')
-
-              -#   = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
+                = k.file_field :image_url, class: "Base__body__area__picture__iconArea__pictureArea"
                 .Base__body__area__picture__iconArea__text
-                  -# ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                - if @item.persisted?
+                - if k.object.persisted?
                   = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
-          -# - if @item.persisted?
-          -#   = i.fields_for :images do |k|
-          -#     #iconArea-js{"data-index" => "#{k.index}"}
-          -#       = k.label :image_url, class: "Base__body__area__picture__iconArea" do
-          -#         = icon('fas','camera')
-          -#         = k.file_field :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: "Base__body__area__picture__iconArea__pictureArea"
-          -#         - if @item.persisted?
-          -#           = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
       
       .Base__body__area__item
         .Base__body__area__item__nameArea

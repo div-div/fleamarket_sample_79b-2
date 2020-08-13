@@ -25,4 +25,5 @@ class Item < ApplicationRecord
     validates :preparation_for_shipment_id
     validates :image_ids, length: {maximum: 10}
   end
+
 end

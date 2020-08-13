@@ -7,7 +7,6 @@ $(document).on('turbolinks:load', ()=> {
     $(cam1).hide()
   })
   
-// $(function(){
   $(".Base__body__area__item__informationArea__space").on('keyup', function(){
     $(".Base__body__area__item__informationArea__number").text($(this).val().length + "/1000");
   });
@@ -52,7 +51,7 @@ $(document).on('turbolinks:load', ()=> {
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // hiddenCheck.trigger('click');
   
-    if(hiddenCheck)hiddenCheck.prop("checked", true);
+    if(hiddenCheck) hiddenCheck.prop("checked", true);
 
     $(this).parent().parent().remove();
     $(`imag[data-index="${targetIndex}"]`).remove();
@@ -69,6 +68,8 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute("src", blobUrl);
     } else {
+      // $("#previews").append(buildImg(targetIndex, blobUrl));
+      // $("#image-box").append(buildFileField(fileIndex[targetIndex]));
       $("#previews").append(buildImg(targetIndex, blobUrl));
       $("#image-box").append(buildFileField(fileIndex[0]));
       fileIndex.shift();
@@ -80,13 +81,10 @@ $(document).on('turbolinks:load', ()=> {
   $("#image-box").on("click", ".Preview__wrapper__btn__edit", function(e){
     const targetIndex = $(this).parent().parent().data("index");
     $("#item_images_attributes_" + targetIndex + "_image_url").click();
-    // const file = e.target.files[targetIndex];
-
-    // const blobUrl = window.URL.createObjectURL(file);
-    // $("#previews").append(buildImg(targetIndex, blobUrl));
-
-    // $("#image-box").append(buildFileField(fileIndex[0]));
-    // img.setAttribute("image_url", blobUrl);
-
+    
+    // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+    //   img.setAttribute("src", blobUrl);
+    // };
+  
   });
 })
