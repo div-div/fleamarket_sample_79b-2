@@ -26,18 +26,19 @@
               %span (税込)
               %span 送料込み 
           // 自分以外のユーザー(ゲストも含む)のとき購入確認画面であるpurchaseコントローラー(confirmationアクション)を呼び出す。ログインしているか判定し、クレジットカード決済登録ページか購入確認画面に分岐させる。
-          - if (current_user == nil)||(current_user.id != @item.seller_id)
-            .itemBox__buyBtn
-              = link_to "/" do
-                購入
-          - elsif @item.status.id == 2
+          - if @item.status_id == 1
+            - if current_user.nil? || current_user.id != @item.user_id
+              .itemBox__buyBtn
+                = link_to confirmation_item_purchases_path(@item.id) do
+                  購入
+            - else current_user.id == @item.user_id
+              .itemBox__editBtn
+                = link_to item_path, method: "DELETE" do
+                  編集 削除
+          - else @item.status_id == 2
             .itemBox__buyBtn--disabled 
               = link_to "/" do
                 売り切れ
-          - elsif current_user.id == @item.user_id
-            .itemBox__editBtn
-              = link_to item_path, method: "DELETE", data: {confirm: "削除しますか？"} do
-                編集  削除
 
           .itemBox__description
             = @item.description
@@ -55,7 +56,8 @@
                     カテゴリー
                   %td
                     = link_to items_url,class: "category" do
-                      = @item.category.category
+                      あああ
+                      -# = @item.category.category
                     -# %br
                     -# = linik_to items_url(@item.category), class: "category" do
                     -#   @item.category
@@ -125,7 +127,8 @@
       .relatedItems
         /*TODO 出品商品と同一カテゴリーの商品一覧へ飛ぶ*/
         = link_to "#" do
-          = @item.category.category
+          -# = @item.category.category
+          あああ
           をもっとみる
         .relatedItems__lists
           .relatedItems__item

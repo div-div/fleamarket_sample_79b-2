@@ -12,6 +12,17 @@ class ApplicationController < ActionController::Base
       Rails.env.production?
   end
 
+  def logged_in?
+    if current_user.nil?
+      redirect_to new_user_session_url, alert: "ログインしてください"
+    end
+  end
+
+  #クレジットカードが登録されているか？
+  def card_holder?
+    redirect_to new_credit_card_path if CreditCard.where(user_id: current_user.id).nil?
+  end
+
   private
 
   def basic_auth
@@ -19,5 +30,4 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
-
 end
