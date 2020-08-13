@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :update, :edit]
   
   def index
     @new_items = Item.where(status_id: 1).order(id: "DESC").limit(5)
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   
   def create
     @brand = Brand.create(brand_params)
-    @item = Item.new(item_params)
+    @item = Item.new(set_item)
     @brand = Brand.new(brand_params)
 
     if @item.save
@@ -43,10 +43,10 @@ class ItemsController < ApplicationController
   end
   
   def update
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     @image = Image.find(params[:id])
 
-    if @item.update(item_params) && @item.user_id == current_user.id
+    if @item.update(set_item) && @item.user_id == current_user.id
       redirect_to edit_item_path, notice: "更新しました"
     elsif @item.images.length > 10 || @item.images.length == 0
       redirect_to edit_item_path, alert: "画像は1~10枚にしてください"
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     @item.images.build
     @brand = Brand.new
     @item.build_brand
@@ -98,9 +98,9 @@ class ItemsController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes:[:brand_name, :id]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)
-  end
+  # def item_params
+  #   params.require(:item).permit(:name, :description, :category_id, :brand_id, :item_condition_id, :delivery_cost_id, :seller_region_id, :preparation_for_shipment_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes:[:brand_name, :id]).merge(seller_id: current_user.id, user_id: current_user.id, status_id:1)
+  # end
   
   def set_item
     @item = Item.find(params[:id])
