@@ -12,15 +12,15 @@
         %li.list
           = link_to "出品する", new_item_path, class: "list__link"
         %li.list
-          = link_to "出品した商品",  selling_users_path, class: "list__link"
+          = link_to "出品した商品 - 出品中", "#", class: "list__link"
         %li.list
           = link_to "出品した商品 - 取引中", "#", class: "list__link"
         %li.list
-          = link_to "出品した商品 - 売却済み", sold_users_path, class: "list__link"
+          = link_to "出品した商品 - 売却済み", "#", class: "list__link"
         %li.list
           = link_to "購入した商品 - 取引中", "#", class: "list__link"
         %li.list
-          = link_to "購入した商品 - 過去の取引", purchased_users_path, class: "list__link"
+          = link_to "購入した商品 - 過去の取引", "#", class: "list__link"
         %li.list
           = link_to "ガイド", "#", class: "list__link"
         %li.list
@@ -59,14 +59,23 @@
             bbbbbbbbb
       .main-contents__content
         %h2.mypage__tab-head 購入した商品
-        %ul.mypage
-          %li.mypage__tabs
-            %h2 取引中
-          %li.mypage__tabs
-            %h2 過去の取引
-        .item-lists
-          %ul.item-lists__field
-            %li.list
-              取引中の商品がありません
+        .relatedItems__lists
+          .relatedItems__item
+            - @purchased_items.each do |item|
+              = link_to items_path(item.id) do
+                %figure.relatedItems__itemImage
+                  = image_tag "#{item.images[0].image_url}"
+                .relatedItems__itemInfo
+                  %h3.relatedItems__itemName
+                    = item.name
+                  .relatedItems__infoDetails
+                    %ul
+                      %li
+                        = item.price
+                      %li
+                        =icon("fa", "star",class:"likeIcon")
+                        0
+                    %p 
+                    (税込み)
 .footer
   = render "layouts/footer"

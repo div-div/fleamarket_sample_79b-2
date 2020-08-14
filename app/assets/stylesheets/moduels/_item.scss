@@ -297,10 +297,12 @@ a{
     }
   }
   &__item{
+    display: flex;
+    flex-wrap: wrap;
     color: rgb(51, 51, 51);
     margin: 0 10px 10px;
     float: left;
-    width: calc(100% / 3);
+    // width: calc(100% / 3);
   }
   &__itemImage{
     width: 180px;
