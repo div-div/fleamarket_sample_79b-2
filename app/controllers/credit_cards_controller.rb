@@ -1,11 +1,12 @@
 class CreditCardsController < ApplicationController
   before_action :logged_in?, only: [:new, :add, :show, :delete]
+  before_action :get_card, only: [:new ,:delete, :show]
+  before_action :card_info, only: [:delete, :show]
 
   require 'payjp'
 
   def new
-    user_card = CreditCard.where(user_id: current_user.id)
-    redirect_to action: "show" if user_card.exists?
+    redirect_to action: "show" unless @card.nil?
   end
 
   def add
@@ -29,26 +30,26 @@ class CreditCardsController < ApplicationController
   end
 
   def show
-    card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new" 
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id) # customer_idを利用して情報を取得する。
-      @default_card_information = customer.cards.retrieve(card.card_id) 
-    
-    end
+    @default_card_information = @customer.cards.retrieve(@card.card_id) 
   end
 
   def delete
-    card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
+    @customer.delete #削除
+    @card.delete
+    redirect_to action: "new"
+  end
+  
+  private
+  def get_card
+    @card = CreditCard.where(user_id: current_user.id).first
+  end
+
+  def card_info
+    if @card.blank?
+      redirect_to action: "new" 
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id) #cutomer_idを利用して情報を取得する。
-      customer.delete #削除
-      card.delete
+      @customer = Payjp::Customer.retrieve(@card.customer_id) # customer_idを利用して情報を取得する。
     end
-      redirect_to action: "new"
   end
 end
