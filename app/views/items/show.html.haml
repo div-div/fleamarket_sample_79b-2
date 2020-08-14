@@ -53,16 +53,16 @@
                   %th
                     カテゴリー
                   %td
-                    -# = @item.category.parent.parent.name
-                    %br
-                    -# = @item.category.parent.name
-                    %br
+                    = @item.category.name
+                    -# %br
+                    -# = @item.category.name
+                    -# %br
                     -# = @item.category.name
                 %tr
                   %th
                     ブランド
                   %td
-                    = @item.brand.brand_name
+                    ブランド
                 %tr
                   %th
                     商品の状態
