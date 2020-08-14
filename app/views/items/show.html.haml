@@ -4,7 +4,7 @@
     .content
       .topContent
         .itemBox
-          .itemBox__name 
+          .itemBox__name
             %h2
               = @item.name
           .itemBox__imageGroup
@@ -14,16 +14,16 @@
                 .itemBox__caroucel
                   %ul
                   - @item.images.each do |image|
-                    %li 
+                    %li
                       = image_tag "#{image.image_url}", size: "75x75"
-                    
+
           .itemBox__priceTag
-            %span 
+            %span
               ￥
               = @item.price.to_s(:delimited)
             .itemBox__priceTag--detail
               %span (税込)
-              %span 送料込み 
+              %span 送料込み
           // 自分以外のユーザー(ゲストも含む)のとき購入確認画面であるpurchaseコントローラー(confirmationアクション)を呼び出す。ログインしているか判定し、クレジットカード決済登録ページか購入確認画面に分岐させる。
           - if @item.status_id == 1
             - if current_user.nil? || current_user.id != @item.user_id
@@ -35,7 +35,7 @@
                 = link_to item_path, method: "DELETE" do
                   編集 削除
           - else @item.status_id == 2
-            .itemBox__buyBtn--disabled 
+            .itemBox__buyBtn--disabled
               = link_to "/" do
                 売り切れ
           .itemBox__description
@@ -53,11 +53,11 @@
                   %th
                     カテゴリー
                   %td
-                    = @item.category.parent.parent.name
+                    -# = @item.category.parent.parent.name
                     %br
-                    = @item.category.parent.name
+                    -# = @item.category.parent.name
                     %br
-                    = @item.category.name
+                    -# = @item.category.name
                 %tr
                   %th
                     ブランド
@@ -102,7 +102,7 @@
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %br
             %button{value: "送信", name: "button", type: "submit", class: "commentBtn"}
-              = icon("fa", "comment") 
+              = icon("fa", "comment")
               コメントする
       %ul.links
         %li.links__nextItem
@@ -119,7 +119,7 @@
         .relatedItems__lists
           .relatedItems__item
             - @related_items.each do |item|
-              = link_to items_path(item.id) do 
+              = link_to items_path(item.id) do
                 %figure.relatedItems__itemImage
                   = image_tag "#{@item.images[0].image_url}"
                 .relatedItems__itemInfo
@@ -132,17 +132,17 @@
                       %li
                         =icon("fa", "star",class:"likeIcon")
                         0
-                    %p 
+                    %p
                     (税込み)
 %aside.appBanner
   .bannerDecoration
     %h2
       誰でもかんたん、人生を変えるフリマアプリ
     %p
-      今すぐ無料ダウンロード 
+      今すぐ無料ダウンロード
     .bannerDecoration__icons
       = link_to "#" do
-        = image_tag "icon/icon-mobile-app-ios.svg", class:"bannerDeoration__icon--ios" 
+        = image_tag "icon/icon-mobile-app-ios.svg", class:"bannerDeoration__icon--ios"
         = image_tag "icon/icon-mobile-app-android.svg", class:"bannerDecoration__icon--adnroid"
 
 = render "layouts/footer"
@@ -152,5 +152,3 @@
     %span.sellBtn__text
       出品
     = image_tag "icon/icon_camera.png", class:"sellBtn__icon"
-
-    

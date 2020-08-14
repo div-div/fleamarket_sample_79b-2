@@ -16,7 +16,7 @@ class CreditCardsController < ApplicationController
     else
       customer = Payjp::Customer.create(
         description: '登録',
-        email: current_user.email, 
+        # email: current_user.email, 
         card: params['payjp-token'],
         metadata: {user_id: current_user.id}
       )
@@ -30,7 +30,7 @@ class CreditCardsController < ApplicationController
   end
 
   def show
-    @default_card_information = @customer.cards.retrieve(@card.card_id) 
+    @default_card_information = @customer.cards.retrieve(@card.card_id)
   end
 
   def delete
@@ -38,7 +38,7 @@ class CreditCardsController < ApplicationController
     @card.delete
     redirect_to action: "new"
   end
-  
+
   private
   def get_card
     @card = CreditCard.find_by(user_id: current_user.id)
@@ -46,7 +46,7 @@ class CreditCardsController < ApplicationController
 
   def card_info  # payjpに顧客の情報(カードを問いあわせる)
     if @card.blank?
-      redirect_to action: "new" 
+      redirect_to action: "new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       @customer = Payjp::Customer.retrieve(@card.customer_id) # customer_idを利用して情報を取得する。

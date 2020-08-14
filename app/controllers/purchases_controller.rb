@@ -16,7 +16,7 @@ class PurchasesController < ApplicationController
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(@card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
     end
   end
 
@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
       customer: @card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
-    @item.buyer_id = current_user.id #Itemsテーブルのseller_idカラムにログインユーザー（購入者のID）入力する    
+    @item.buyer_id = current_user.id #Itemsテーブルのseller_idカラムにログインユーザー（購入者のID）入力する
     @item.status_id = 2  #Itemsテーブルのstatusカラムを売却済(2)にステータスを変える
     @item.save
     redirect_to controller: "items", action: "index", notice: "支払いが完了しました"

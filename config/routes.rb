@@ -1,5 +1,5 @@
   Rails.application.routes.draw do
- 
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions:      'users/sessions',
@@ -11,7 +11,7 @@
       get 'sold', to: 'users#sold'
     end
   end
-  
+
   resources :credit_cards, only:[:new, :show] do
     collection do
       post 'show', to: 'credit_cards#show'
@@ -28,7 +28,7 @@
   end
   root to: "items#index"
 
-  resources :items, only:[:index, :new, :create, :show, :edit, :update] do
+  resources :items, only:[:index, :new, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
