@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', ()=> {
-
-  var cam = Array.from(document.getElementsByClassName('fa-camera'))
+　var cam = Array.from(document.getElementsByClassName('fa-camera'))
   cam.pop()
   cam.forEach(function(cam1){
     $(cam1).hide()
