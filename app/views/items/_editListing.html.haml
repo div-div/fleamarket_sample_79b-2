@@ -31,7 +31,7 @@
                 .Base__body__area__picture__iconArea__text
                 - if k.object.persisted?
                   = k.check_box :_destroy, data:{index: k.index }, class: "hidden-destroy"
-      
+
       .Base__body__area__item
         .Base__body__area__item__nameArea
           .Base__body__area__item__nameArea__step
@@ -58,7 +58,7 @@
               カテゴリー
             .Base__body__area__itemDetail__categoryArea__step__mark
               必須
-          = i.collection_select( :category_id, Category.all, :id, :category, {prompt: "選択してください"})
+          = i.collection_select( :category_id, @category_parent_array, :id, :name, {prompt: "選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'})
         .Base__body__area__itemDetail__brandArea
           .Base__body__area__itemDetail__brandArea__step
             .Base__body__area__itemDetail__brandArea__step__brand
@@ -74,8 +74,8 @@
             .Base__body__area__itemDetail__conditionArea__step__mark
               必須
           = i.collection_select( :item_condition_id, ItemCondition.all, :id, :condition, {prompt: "選択してください"})
-          
-      
+
+
       .Base__body__area__delivery
         配送について
         = link_to icon("fas", "question-circle"), "#"
@@ -103,7 +103,7 @@
               必須
           .Base__body__area__delivery__daysArea__selectArea
             = i.collection_select( :preparation_for_shipment_id, PreparationForShipment.all, :id, :day, {prompt: "選択してください"})
-      
+
       .Base__body__area__price
         価格（¥300〜9,999,999）
         = link_to icon("fas", "question-circle"), "#"
@@ -136,7 +136,7 @@
 
       .Base__body__area__attention
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規則に同意したことになります。
-      
+
       .Base__body__area__foot
         .Base__body__area__foot__agreementArea
           = link_to "プライバシーポリシー","#", class: "Base__body__area__foot__agreementArea__policy"
@@ -146,4 +146,3 @@
           = link_to (image_tag "logo-white.png", size: "170x49"), "#"
         .Base__body__area__foot__applicationName
           ©️furima, Inc.
-          

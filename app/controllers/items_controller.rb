@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     # @category_parent_array = ["---"]
     #Categoryデータベースから、親カテゴリーのみ抽出し、配列化
     @category_parent_array = Category.where(ancestry: nil)
+
     @items = Item.includes(:images).order("created_at DESC")
   end
 
@@ -63,6 +64,7 @@ class ItemsController < ApplicationController
     @item.images.build
     @brand = Brand.new
     @item.build_brand
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def get_category_children
