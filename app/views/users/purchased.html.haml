@@ -61,57 +61,21 @@
         %h2.mypage__tab-head 購入した商品
         .relatedItems__lists
           .relatedItems__item
-            -# - @purchased_items.each do |item|
-              -# = link_to items_path(item.id) do
+            - @purchased_items.each do |item|
+              = link_to items_path(item.id) do
                 %figure.relatedItems__itemImage
-                  -# = image_tag "#{@item.images[0].image_url}"
-
+                  = image_tag "#{item.images[0].image_url}"
                 .relatedItems__itemInfo
                   %h3.relatedItems__itemName
-                    -# = item.name
-                    aaa
-                    
+                    = item.name
                   .relatedItems__infoDetails
                     %ul
                       %li
-                        -# = item.price
-                        aaa
+                        = item.price
                       %li
                         =icon("fa", "star",class:"likeIcon")
                         0
                     %p 
                     (税込み)
-            = link_to items_path do 
-              %figure.relatedItems__itemImage
-                ss
-                .relatedItems__itemInfo
-                  %h3.relatedItems__itemName
-                    aaa  
-                    .relatedItems__infoDetails
-                      %ul
-                        %li
-                        -# = item.price
-                          aaa
-                        %li
-                          =icon("fa", "star",class:"likeIcon")
-                          0
-                      %p 
-                      (税込み)
-            = link_to items_path do 
-              %figure.relatedItems__itemImage
-                ss
-                .relatedItems__itemInfo
-                  %h3.relatedItems__itemName
-                    aaa  
-                    .relatedItems__infoDetails
-                      %ul
-                        %li
-                          -# = item.price
-                          aaa
-                        %li
-                          =icon("fa", "star",class:"likeIcon")
-                          0
-                      %p 
-                      (税込み)
 .footer
   = render "layouts/footer"

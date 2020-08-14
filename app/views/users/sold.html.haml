@@ -58,15 +58,24 @@
           %li.mypage__notice
             bbbbbbbbb
       .main-contents__content
-        %h2.mypage__tab-head 購入した商品
-        %ul.mypage
-          %li.mypage__tabs
-            %h2 取引中
-          %li.mypage__tabs
-            %h2 過去の取引
-        .item-lists
-          %ul.item-lists__field
-            %li.list
-              取引中の商品がありません
+        %h2.mypage__tab-head 売却した商品
+        .relatedItems__lists
+          .relatedItems__item
+            - @sold_items.each do |item|
+              = link_to items_path(item.id) do
+                %figure.relatedItems__itemImage
+                  = image_tag "#{item.images[0].image_url}"
+                .relatedItems__itemInfo
+                  %h3.relatedItems__itemName
+                    = item.name
+                  .relatedItems__infoDetails
+                    %ul
+                      %li
+                        = item.price
+                      %li
+                        =icon("fa", "star",class:"likeIcon")
+                        0
+                    %p 
+                    (税込み)
 .footer
   = render "layouts/footer"

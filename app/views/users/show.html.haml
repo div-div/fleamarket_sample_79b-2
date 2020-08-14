@@ -12,15 +12,15 @@
         %li.list
           = link_to "出品する", new_item_path, class: "list__link"
         %li.list
-          = link_to "出品した商品 - 出品中", "#", class: "list__link"
+          = link_to "出品した商品",  selling_users_path, class: "list__link"
         %li.list
           = link_to "出品した商品 - 取引中", "#", class: "list__link"
         %li.list
-          = link_to "出品した商品 - 売却済み", "#", class: "list__link"
+          = link_to "出品した商品 - 売却済み", sold_users_path, class: "list__link"
         %li.list
           = link_to "購入した商品 - 取引中", "#", class: "list__link"
         %li.list
-          = link_to "購入した商品 - 過去の取引", "#", class: "list__link"
+          = link_to "購入した商品 - 過去の取引", purchased_users_path, class: "list__link"
         %li.list
           = link_to "ガイド", "#", class: "list__link"
         %li.list
