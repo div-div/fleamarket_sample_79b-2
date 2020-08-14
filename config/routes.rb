@@ -5,6 +5,11 @@
     sessions:      'users/sessions',
   }
   resources :users, only:[:show] do
+    collection do
+      get 'selling', to: 'users#selling'
+      get 'purchased', to: 'users#purchased'
+      get 'sold', to: 'users#sold'
+    end
   end
   
   resources :credit_cards, only:[:new, :show] do

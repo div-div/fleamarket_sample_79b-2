@@ -41,10 +41,10 @@ class CreditCardsController < ApplicationController
   
   private
   def get_card
-    @card = CreditCard.where(user_id: current_user.id).first
+    @card = CreditCard.find_by(user_id: current_user.id)
   end
 
-  def card_info
+  def card_info  # payjpに顧客の情報(カードを問いあわせる)
     if @card.blank?
       redirect_to action: "new" 
     else
