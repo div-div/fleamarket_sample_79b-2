@@ -32,6 +32,7 @@
                   購入
             - else current_user.id == @item.user_id
               .itemBox__editBtn
+
                 = link_to item_path, method: "GET" do
                   編集 削除
           - else @item.status_id == 2
