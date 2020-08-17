@@ -33,7 +33,9 @@
             - else current_user.id == @item.user_id
               .itemBox__editBtn
                 = link_to edit_item_path, method: "get" do
-                  編集 削除
+                  編集
+                = link_to item_path, method: "delete" do
+                  削除
           - else @item.status_id == 2
             .itemBox__buyBtn--disabled
               = link_to "/" do

@@ -55,13 +55,14 @@
     .PickupCategory__items__item-box
       - @new_items.each do |item|
         = link_to item_path(item.id), class: "item-link" do
-          .PickupCategory__items__item-box__image
-            = image_tag "#{item.images[0].image_url}"
+          - if item.images[0].persisted?
+            .PickupCategory__items__item-box__image
+              = image_tag item.images[0].image_url.url
           .PickupCategory__items__item-box__name
             = item.name
           %ul.PickupCategory__items__item-box__prudcts
             %li.PickupCategory__items__item-box__prudcts__price
-              = item.price 
+              = item.price
               円
             %li.PickupCategory__items__item-box__prudcts__iine
               2

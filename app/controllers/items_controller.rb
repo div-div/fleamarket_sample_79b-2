@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :edit]
 
   def index
+    
     @new_items = Item.where(status_id: 1).order(id: "DESC").limit(5)
   end
 
