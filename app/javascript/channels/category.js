@@ -37,11 +37,7 @@ $(function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
-<<<<<<< Updated upstream
         url: '/items/get_category_children',
-=======
-        url: '/items/get_category_children/',
->>>>>>> Stashed changes
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
